@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>СтудПомощник — AI-бот для учёбы в MAX</title>
+<style>
+  :root{--navy:#1f3b73;--ink:#16324f;--soft:#e8eef7;--muted:#5c6b7b;--line:#c9d6e6}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Arial,Helvetica,sans-serif;color:#22303f;background:#f7f9fc;line-height:1.55}
+  header{background:var(--navy);color:#fff;padding:28px 20px}
+  .wrap{max-width:960px;margin:0 auto;padding:0 20px}
+  header .wrap{display:flex;align-items:center;gap:16px}
+  .logo{width:56px;height:56px;border-radius:12px;background:#fff;color:var(--navy);display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:24px}
+  h1{font-size:28px;margin:0 0 6px}
+  header p{margin:0;opacity:.9}
+  main{padding:28px 0 40px}
+  h2{color:var(--ink);font-size:22px;margin:32px 0 12px}
+  h3{color:var(--ink);font-size:17px;margin:20px 0 8px}
+  p,li{font-size:16px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:14px 0}
+  .btn{display:inline-block;background:var(--navy);color:#fff;text-decoration:none;padding:12px 22px;border-radius:10px;font-size:17px;margin:8px 8px 8px 0}
+  .btn.secondary{background:#fff;color:var(--navy);border:2px solid var(--navy)}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:15px}
+  th,td{border:1px solid var(--line);padding:9px 10px;text-align:left}
+  th{background:var(--soft);color:var(--ink)}
+  .muted{color:var(--muted);font-size:14px}
+  footer{border-top:1px solid var(--line);padding:20px;color:var(--muted);font-size:14px;background:#fff}
+  footer a{color:var(--navy)}
+  ul{padding-left:22px}
+  .tag{display:inline-block;background:var(--soft);color:var(--ink);padding:4px 10px;border-radius:999px;font-size:13px;margin:0 6px 6px 0}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="logo">СП</div>
+    <div>
+      <h1>СтудПомощник</h1>
+      <p>AI-бот для учёбы в мессенджере MAX</p>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="card">
+    <p><strong>СтудПомощник</strong> — бот в мессенджере MAX для студентов колледжей и вузов. Помогает разобрать учебную задачу, объясняет тему простыми словами, решает задание по фотографии, делает презентации <strong>.pptx</strong> и документы Word <strong>.docx</strong>.</p>
+    <p>Пользователь пишет вопрос как есть — бот сам выбирает глубину ответа. Если ответ не понравился, под ним есть кнопка «Усилить»: кредиты за прошлый ответ возвращаются, списывается только разница за более глубокий разбор.</p>
+    <p>
+      <a class="btn" href="https://max.ru/id560703696513_1_bot">Открыть бота в MAX</a>
+      <a class="btn secondary" href="oferta.html">Публичная оферта</a>
+    </p>
+    <p class="muted">Работает в мессенджере MAX. Первые 5 кредитов — бесплатно.</p>
+  </div>
+
+  <h2>Что умеет</h2>
+  <div class="card">
+    <ul>
+      <li><strong>Учебные вопросы</strong> — объяснение темы, разбор задачи, проверка решения.</li>
+      <li><strong>Фото задания</strong> — пришлите снимок из методички или тетради, бот разберёт решение.</li>
+      <li><strong>Презентация .pptx</strong> — тема, 8–15 слайдов и стиль; готовый файл приходит в чат.</li>
+      <li><strong>Документ Word .docx</strong> — реферат, отчёт или доклад с оформлением: Times New Roman 14, интервал 1,5, поля, нумерация страниц.</li>
+      <li><strong>Голосовые сообщения</strong> — распознаёт речь и отвечает текстом (до 2 минут).</li>
+    </ul>
+  </div>
+
+  <h2>Стоимость</h2>
+  <div class="card">
+    <p>Кредиты покупаются пакетами. 1 быстрый ответ — 1 кредит, глубокий разбор — 3, максимальный — 8, фото — 2, презентация или документ — 20.</p>
+    <table>
+      <tr><th>Пакет</th><th>Цена</th><th>Кредиты</th></tr>
+      <tr><td>Знакомство</td><td>10 ₽</td><td>10</td></tr>
+      <tr><td>Пробный</td><td>20 ₽</td><td>20</td></tr>
+      <tr><td>Старт</td><td>50 ₽</td><td>45</td></tr>
+      <tr><td>Студент</td><td>100 ₽</td><td>90</td></tr>
+      <tr><td>Сессия</td><td>199 ₽</td><td>180</td></tr>
+      <tr><td>Супер</td><td>299 ₽</td><td>270</td></tr>
+      <tr><td>Максимум</td><td>499 ₽</td><td>450</td></tr>
+    </table>
+    <p class="muted">Кредиты не сгорают. Оплата — банковской картой или через СБП на платёжной странице Robokassa. Чек об оплате приходит на указанный e-mail.</p>
+  </div>
+
+  <h2>Как начать</h2>
+  <div class="card">
+    <ol>
+      <li>Откройте бота в MAX: <a href="https://max.ru/id560703696513_1_bot">max.ru/id560703696513_1_bot</a>.</li>
+      <li>Нажмите «Начать» — начислятся 5 бесплатных кредитов.</li>
+      <li>Задайте вопрос текстом, голосом или пришлите фото задания.</li>
+      <li>Для презентаций и документов выберите соответствующий пункт меню.</li>
+    </ol>
+    <p>
+      <span class="tag">Учебные вопросы</span>
+      <span class="tag">Фото заданий</span>
+      <span class="tag">Презентации</span>
+      <span class="tag">Word</span>
+      <span class="tag">Голос</span>
+    </p>
+  </div>
+
+  <h2>Реквизиты и контакты</h2>
+  <div class="card">
+    <p><strong>Исполнитель:</strong> Индивидуальный предприниматель Волков Юрий Андреевич</p>
+    <p><strong>ИНН:</strong> 560703696513<br>
+    <strong>ОГРНИП:</strong> 326565800103499</p>
+    <p><strong>E-mail для связи и чеков:</strong> <a href="mailto:dogandwolf0987@ya.ru">dogandwolf0987@ya.ru</a></p>
+    <p><strong>Сервис:</strong> бот «СтудПомощник» в мессенджере MAX — <a href="https://max.ru/id560703696513_1_bot">max.ru/id560703696513_1_bot</a></p>
+    <p class="muted">Услуги оказываются дистанционно через бота в MAX. Оплата принимается через Robokassa с формированием фискального чека.</p>
+  </div>
+
+  <h2>Документы</h2>
+  <div class="card">
+    <ul>
+      <li><a href="oferta.html">Публичная оферта</a></li>
+      <li><a href="privacy.html">Политика обработки персональных данных</a></li>
+      <li><a href="refund.html">Возврат денежных средств</a></li>
+    </ul>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 ИП Волков Юрий Андреевич · ИНН 560703696513 · <a href="mailto:dogandwolf0987@ya.ru">dogandwolf0987@ya.ru</a></p>
+    <p class="muted">Сервис не является официальным сервисом учебного заведения. Бот может ошибаться — проверяйте учебные материалы.</p>
+  </div>
+</footer>
+</body>
+</html>
