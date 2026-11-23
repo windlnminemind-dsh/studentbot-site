@@ -187,6 +187,52 @@ tbody tr:hover td{background:var(--paper-edge)}
 }
 .legal .back a{border-bottom:0}
 
+/* ---------- заявка (форма возврата) ---------- */
+.form{
+  margin:26px 0 10px;padding:0;border:0;
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 32px;
+  max-width:none;
+}
+.form .field{display:flex;flex-direction:column;gap:7px}
+.form .field.wide{grid-column:1 / -1}
+.form label{
+  font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--muted);
+}
+.form label .req{color:var(--accent)}
+.form input[type=text],.form input[type=email],.form input[type=number],.form input[type=date],.form select,.form textarea{
+  font-family:var(--serif);font-size:16px;color:var(--ink);
+  background:transparent;border:0;border-bottom:1px solid var(--ink);
+  border-radius:0;padding:9px 0;width:100%;
+  -webkit-appearance:none;appearance:none;
+}
+.form select{
+  background-image:linear-gradient(45deg,transparent 49%,var(--ink) 50%),linear-gradient(-45deg,transparent 49%,var(--ink) 50%);
+  background-position:calc(100% - 12px) 55%,calc(100% - 7px) 55%;
+  background-size:5px 5px,5px 5px;background-repeat:no-repeat;
+}
+.form textarea{min-height:96px;resize:vertical;border:1px solid var(--rule);padding:12px}
+.form input:focus,.form select:focus,.form textarea:focus{outline:none;border-color:var(--accent)}
+.form .hint{font-size:13px;color:var(--muted);line-height:1.4}
+.form .check{display:flex;gap:12px;align-items:flex-start;font-size:15px;color:var(--ink-soft);text-transform:none;letter-spacing:0;font-weight:400}
+.form .check input{width:16px;height:16px;margin-top:3px;accent-color:var(--accent)}
+.form-actions{grid-column:1 / -1;display:flex;flex-wrap:wrap;gap:24px;align-items:center;padding-top:6px}
+.form button{
+  font-family:var(--serif);font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;
+  color:var(--paper);background:var(--ink);border:1px solid var(--ink);
+  padding:14px 26px;cursor:pointer;
+}
+.form button:hover{background:var(--accent);border-color:var(--accent)}
+.form-note{font-size:13px;color:var(--muted);max-width:52ch}
+.notice{
+  border-left:2px solid var(--accent);padding:2px 0 2px 16px;margin:22px 0;
+  font-size:15px;color:var(--ink-soft);max-width:70ch;
+}
+.sent{
+  border:1px solid var(--rule);padding:18px 20px;margin:22px 0;max-width:70ch;
+  font-size:16px;
+}
+.sent strong{font-family:var(--display);font-size:20px}
+
 /* ---------- подвал ---------- */
 .colophon{
   max-width:1080px;margin:0 auto;padding:18px 40px 0;
