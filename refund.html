@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Возврат денежных средств — СтудПомощник</title>
+<meta name="description" content="Как вернуть неиспользованные кредиты СтудПомощника: заявка на возврат прямо на сайте, сроки, что удерживается.">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -20,17 +21,107 @@
 <div class="wrap legal">
 <p class="back"><a href="index.html">← На главную</a></p>
 <h1>Возврат денежных средств</h1>
-<p class="muted">Редакция от 19.11.2026.</p>
+<p class="muted">Редакция от 24.11.2026.</p>
 
 <h2>1. Когда возможен возврат</h2>
 <p>Вы можете отказаться от услуги и запросить возврат стоимости <strong>неиспользованных кредитов</strong> в любое время. Кредиты, которые уже были потрачены на ответы, разборы, презентации или документы, возврату не подлежат, поскольку услуга по ним уже оказана.</p>
 
-<h2>2. Как запросить возврат</h2>
-<ol>
-  <li>Напишите на e-mail <a href="mailto:windlnminemind@gmail.com">windlnminemind@gmail.com</a> с темой «Возврат».</li>
-  <li>Укажите дату и сумму платежа, последние 4 цифры карты (не полный номер) и ваш идентификатор в боте (команда /id).</li>
-  <li>Мы подтвердим остаток неиспользованных кредитов и сумму возврата.</li>
-</ol>
+<h2 id="form">2. Заявка на возврат</h2>
+<p>Заполните форму ниже — она уйдёт нам автоматически, отвечать письмом не нужно. Всё, что нам нужно для проверки: кто вы, когда и на сколько пополняли счёт и сколько кредитов осталось.</p>
+
+<div class="sent" id="sent" hidden>
+  <strong>Заявка отправлена.</strong><br>
+  Мы получили её и ответим на указанный e-mail. Обычно проверка занимает 1–2 рабочих дня, деньги возвращаются в срок до 10 рабочих дней с момента согласования.
+</div>
+
+<form class="form" id="refund-form" action="https://formsubmit.co/windlnminemind@gmail.com" method="POST">
+  <input type="hidden" name="_subject" value="СтудПомощник — заявка на возврат">
+  <input type="hidden" name="_template" value="table">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_next" value="https://windlnminemind-dsh.github.io/studentbot-site/refund.html?sent=1">
+  <input type="hidden" name="Источник" value="Сайт СтудПомощник · страница возврата">
+  <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+  <div class="field">
+    <label for="f-name">Имя <span class="req">*</span></label>
+    <input id="f-name" type="text" name="Имя" required autocomplete="name">
+  </div>
+
+  <div class="field">
+    <label for="f-email">E-mail для ответа <span class="req">*</span></label>
+    <input id="f-email" type="email" name="E-mail" required autocomplete="email">
+  </div>
+
+  <div class="field">
+    <label for="f-user">ID в боте <span class="req">*</span></label>
+    <input id="f-user" type="text" name="ID в MAX" required placeholder="команда /id в боте">
+    <span class="hint">Напишите боту <b>/id</b> — он покажет ваш номер и текущий баланс кредитов.</span>
+  </div>
+
+  <div class="field">
+    <label for="f-credits">Остаток кредитов</label>
+    <input id="f-credits" type="number" name="Остаток кредитов" min="0" step="1" placeholder="например, 47">
+  </div>
+
+  <div class="field">
+    <label for="f-date">Дата платежа <span class="req">*</span></label>
+    <input id="f-date" type="date" name="Дата платежа" required>
+  </div>
+
+  <div class="field">
+    <label for="f-amount">Сумма платежа, ₽ <span class="req">*</span></label>
+    <input id="f-amount" type="number" name="Сумма, ₽" min="1" step="1" required placeholder="например, 100">
+  </div>
+
+  <div class="field">
+    <label for="f-package">Пакет</label>
+    <select id="f-package" name="Пакет">
+      <option value="">не помню / не знаю</option>
+      <option>Знакомство — 10 ₽</option>
+      <option>Пробный — 20 ₽</option>
+      <option>Старт — 50 ₽</option>
+      <option>Студент — 100 ₽</option>
+      <option>Сессия — 199 ₽</option>
+      <option>Супер — 299 ₽</option>
+      <option>Максимум — 499 ₽</option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label for="f-method">Чем платили</label>
+    <select id="f-method" name="Способ оплаты">
+      <option value="">не помню</option>
+      <option>Карта РФ</option>
+      <option>СБП</option>
+      <option>Другое</option>
+    </select>
+  </div>
+
+  <div class="field wide">
+    <label for="f-reason">Почему возврат</label>
+    <textarea id="f-reason" name="Причина" placeholder="Коротко: не подошёл, купил(а) лишнее, техническая ошибка — как удобно"></textarea>
+  </div>
+
+  <div class="field wide">
+    <label for="f-back">Куда вернуть деньги</label>
+    <input id="f-back" type="text" name="Куда вернуть" placeholder="последние 4 цифры карты или телефон для СБП — полный номер карты не нужен">
+    <span class="hint">Возврат идёт тем же способом, которым была оплата. Полный номер карты не присылайте — он нам не нужен.</span>
+  </div>
+
+  <label class="check field wide" for="f-consent">
+    <input id="f-consent" type="checkbox" name="Согласие на обработку ПДн" value="да" required>
+    <span>Согласен(а) на обработку персональных данных для рассмотрения заявки — по <a href="privacy.html">политике обработки персональных данных</a>. <span class="req">*</span></span>
+  </label>
+
+  <div class="form-actions">
+    <button type="submit">Отправить заявку</button>
+    <span class="form-note">Заявка придёт на рабочую почту автоматически. Ответ — на указанный e-mail, обычно в течение 1–2 рабочих дней.</span>
+  </div>
+</form>
+
+<div class="notice">
+  Форма не открылась или удобнее письмом? Напишите на <a href="mailto:windlnminemind@gmail.com?subject=Возврат">windlnminemind@gmail.com</a> с темой «Возврат» — те же данные, и мы всё сделаем.
+</div>
 
 <h2>3. Сроки и способ</h2>
 <p>Возврат производится тем же способом, которым была произведена оплата, в срок до 10 рабочих дней с момента согласования заявления. Срок зачисления на карту зависит от банка и обычно составляет 1–5 рабочих дней.</p>
@@ -39,7 +130,7 @@
 <p>Из суммы возврата удерживаются фактически понесённые расходы: комиссия платёжного сервиса за приём и возврат платежа. Остаток возвращается полностью.</p>
 
 <h2>5. Если услуга оказана некачественно</h2>
-<p>Если бот выдал ошибку, пустой или повреждённый файл, кредиты возвращаются автоматически. Если этого не произошло — напишите на e-mail, мы разберёмся и вернём кредиты или деньги.</p>
+<p>Если бот выдал ошибку, пустой или повреждённый файл, кредиты возвращаются автоматически. Если этого не произошло — заполните заявку выше и укажите, что случилось: мы разберёмся и вернём кредиты или деньги.</p>
 
 <h2>6. Контакты</h2>
 <p>ИП Волков Юрий Андреевич, ИНН 560703696513, ОГРНИП 326565800103499<br>
@@ -51,5 +142,16 @@ E-mail: <a href="mailto:windlnminemind@gmail.com">windlnminemind@gmail.com</a></
   <span class="left">СтудПомощник</span>
   <span class="right">© 2026 ИП Волков Юрий Андреевич · <a href="mailto:windlnminemind@gmail.com">windlnminemind@gmail.com</a></span>
 </footer>
+<script>
+  (function () {
+    if (location.search.indexOf('sent=1') !== -1) {
+      var s = document.getElementById('sent');
+      var f = document.getElementById('refund-form');
+      if (s) s.hidden = false;
+      if (f) f.hidden = true;
+      if (s) s.scrollIntoView({ block: 'center' });
+    }
+  })();
+</script>
 </body>
 </html>
