@@ -4,125 +4,134 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>СтудПомощник — AI-бот для учёбы в MAX</title>
-<style>
-  :root{--navy:#1f3b73;--ink:#16324f;--soft:#e8eef7;--muted:#5c6b7b;--line:#c9d6e6}
-  *{box-sizing:border-box}
-  body{margin:0;font-family:Arial,Helvetica,sans-serif;color:#22303f;background:#f7f9fc;line-height:1.55}
-  header{background:var(--navy);color:#fff;padding:28px 20px}
-  .wrap{max-width:960px;margin:0 auto;padding:0 20px}
-  header .wrap{display:flex;align-items:center;gap:16px}
-  .logo{width:56px;height:56px;border-radius:12px;background:#fff;color:var(--navy);display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:24px}
-  h1{font-size:28px;margin:0 0 6px}
-  header p{margin:0;opacity:.9}
-  main{padding:28px 0 40px}
-  h2{color:var(--ink);font-size:22px;margin:32px 0 12px}
-  h3{color:var(--ink);font-size:17px;margin:20px 0 8px}
-  p,li{font-size:16px}
-  .card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:14px 0}
-  .btn{display:inline-block;background:var(--navy);color:#fff;text-decoration:none;padding:12px 22px;border-radius:10px;font-size:17px;margin:8px 8px 8px 0}
-  .btn.secondary{background:#fff;color:var(--navy);border:2px solid var(--navy)}
-  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:15px}
-  th,td{border:1px solid var(--line);padding:9px 10px;text-align:left}
-  th{background:var(--soft);color:var(--ink)}
-  .muted{color:var(--muted);font-size:14px}
-  footer{border-top:1px solid var(--line);padding:20px;color:var(--muted);font-size:14px;background:#fff}
-  footer a{color:var(--navy)}
-  ul{padding-left:22px}
-  .tag{display:inline-block;background:var(--soft);color:var(--ink);padding:4px 10px;border-radius:999px;font-size:13px;margin:0 6px 6px 0}
-</style>
+<meta name="description" content="СтудПомощник — бот в мессенджере MAX: разбирает учебные задачи, объясняет темы, делает презентации .pptx и документы Word. Пакеты кредитов от 10 ₽.">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <div class="wrap">
-    <div class="logo">СП</div>
-    <div>
-      <h1>СтудПомощник</h1>
-      <p>AI-бот для учёбы в мессенджере MAX</p>
-    </div>
-  </div>
+
+<header class="masthead">
+  <span class="brand">СтудПомощник</span>
+  <span class="meta">ИП Волков Ю. А. · ИНН 560703696513 · MMXXVI</span>
 </header>
+<nav class="rubrics">
+  <a href="index.html" aria-current="page">Главная</a>
+  <a href="oferta.html">Оферта</a>
+  <a href="privacy.html">Политика ПДн</a>
+  <a href="refund.html">Возврат</a>
+</nav>
 
-<main class="wrap">
-  <div class="card">
-    <p><strong>СтудПомощник</strong> — бот в мессенджере MAX для студентов колледжей и вузов. Помогает разобрать учебную задачу, объясняет тему простыми словами, решает задание по фотографии, делает презентации <strong>.pptx</strong> и документы Word <strong>.docx</strong>.</p>
-    <p>Пользователь пишет вопрос как есть — бот сам выбирает глубину ответа. Если ответ не понравился, под ним есть кнопка «Усилить»: кредиты за прошлый ответ возвращаются, списывается только разница за более глубокий разбор.</p>
-    <p>
-      <a class="btn" href="https://max.ru/id560703696513_1_bot">Открыть бота в MAX</a>
-      <a class="btn secondary" href="oferta.html">Публичная оферта</a>
-    </p>
-    <p class="muted">Работает в мессенджере MAX. При первом запуске начисляются 30 кредитов — бесплатно.</p>
-  </div>
+<div class="wrap">
 
-  <h2>Что умеет</h2>
-  <div class="card">
-    <ul>
-      <li><strong>Учебные вопросы</strong> — объяснение темы, разбор задачи, проверка решения.</li>
-      <li><strong>Фото задания</strong> — пришлите снимок из методички или тетради, бот разберёт решение.</li>
-      <li><strong>Презентация .pptx</strong> — тема, 8–15 слайдов и стиль; готовый файл приходит в чат.</li>
-      <li><strong>Документ Word .docx</strong> — реферат, отчёт или доклад с оформлением: Times New Roman 14, интервал 1,5, поля, нумерация страниц.</li>
-      <li><strong>Голосовые сообщения</strong> — распознаёт речь и отвечает текстом (до 2 минут).</li>
-    </ul>
-  </div>
-
-  <h2>Стоимость</h2>
-  <div class="card">
-    <p>Кредиты покупаются пакетами. Цена операции: быстрый ответ — 1 кредит, «Глубже» — 3, «Максимум» — 8, фото задания — 2, поиск в интернете — плюс 2, презентация .pptx или документ Word — 20. Картинка к слайду, таблица и дополнительный слайд — по 2 кредита, доработка готовой презентации — 30, 45 или 65 кредитов по объёму правок.</p>
-    <table>
-      <tr><th>Пакет</th><th>Цена</th><th>Кредиты</th></tr>
-      <tr><td>Знакомство</td><td>10 ₽</td><td>10</td></tr>
-      <tr><td>Пробный</td><td>20 ₽</td><td>21 (+5 % бонус)</td></tr>
-      <tr><td>Старт</td><td>50 ₽</td><td>55 (+10 % бонус)</td></tr>
-      <tr><td>Студент</td><td>100 ₽</td><td>115 (+15 % бонус)</td></tr>
-      <tr><td>Сессия</td><td>199 ₽</td><td>240 (+20 % бонус)</td></tr>
-      <tr><td>Супер</td><td>299 ₽</td><td>375 (+25 % бонус)</td></tr>
-      <tr><td>Максимум</td><td>499 ₽</td><td>650 (+30 % бонус)</td></tr>
-    </table>
-    <p class="muted">Кредиты не сгорают. Оплата — банковской картой или через СБП на защищённой платёжной странице. Фискальный чек приходит на указанный при оплате e-mail.</p>
-  </div>
-
-  <h2>Как начать</h2>
-  <div class="card">
-    <ol>
-      <li>Откройте бота в MAX: <a href="https://max.ru/id560703696513_1_bot">max.ru/id560703696513_1_bot</a>.</li>
-      <li>Нажмите «Начать» — начислятся 30 бесплатных кредитов.</li>
-      <li>Задайте вопрос текстом, голосом или пришлите фото задания.</li>
-      <li>Для презентаций и документов выберите соответствующий пункт меню.</li>
-    </ol>
-    <p>
-      <span class="tag">Учебные вопросы</span>
-      <span class="tag">Фото заданий</span>
-      <span class="tag">Презентации</span>
-      <span class="tag">Word</span>
-      <span class="tag">Голос</span>
+  <div class="lede">
+    <span class="kicker">Бот в мессенджере MAX · 2026</span>
+    <h1>Бот, который разбирает учёбу</h1>
+    <p class="deck">СтудПомощник — бот для студентов колледжей и вузов. Разбирает учебную задачу, объясняет тему простыми словами, решает задание по фотографии, собирает презентации .pptx и документы Word .docx.</p>
+    <p class="deck">Пишете вопрос как есть — бот сам выбирает глубину ответа. Если ответ не понравился, под ним есть кнопка «Усилить»: кредиты за прошлый ответ возвращаются, списывается только разница за более глубокий разбор.</p>
+    <p class="actions">
+      <a class="cta" href="https://max.ru/id560703696513_1_bot">Открыть бота в MAX</a>
+      <a class="cta quiet" href="oferta.html">Публичная оферта</a>
     </p>
   </div>
 
-  <h2>Реквизиты и контакты</h2>
-  <div class="card">
-    <p><strong>Исполнитель:</strong> Индивидуальный предприниматель Волков Юрий Андреевич</p>
-    <p><strong>ИНН:</strong> 560703696513<br>
-    <strong>ОГРНИП:</strong> 326565800103499</p>
-    <p><strong>E-mail для связи:</strong> <a href="mailto:windlnminemind@gmail.com">windlnminemind@gmail.com</a><br>
-    <strong>E-mail для чеков:</strong> <a href="mailto:dogandwolf0987@ya.ru">dogandwolf0987@ya.ru</a></p>
-    <p><strong>Сервис:</strong> бот «СтудПомощник» в мессенджере MAX — <a href="https://max.ru/id560703696513_1_bot">max.ru/id560703696513_1_bot</a></p>
-    <p class="muted">Услуги оказываются дистанционно через бота в MAX. Оплата принимается на защищённой платёжной странице с формированием фискального чека.</p>
-  </div>
+  <section>
+    <div class="section-num">01 · Что умеет</div>
+    <div>
+      <h2>Пять рабочих сценариев</h2>
+      <ul class="list-editorial">
+        <li><span class="n">01</span><div><div class="t">Учебные вопросы</div><div class="d">Объяснение темы, разбор задачи, проверка решения — текстом или голосом.</div></div></li>
+        <li><span class="n">02</span><div><div class="t">Фото задания</div><div class="d">Пришлите снимок из методички или тетради — бот разберёт решение.</div></div></li>
+        <li><span class="n">03</span><div><div class="t">Презентация .pptx</div><div class="d">Тема, 8–15 слайдов и стиль; готовый файл приходит в чат.</div></div></li>
+        <li><span class="n">04</span><div><div class="t">Документ Word .docx</div><div class="d">Реферат, отчёт или доклад с оформлением: Times New Roman 14, интервал 1,5, поля и нумерация страниц.</div></div></li>
+        <li><span class="n">05</span><div><div class="t">Голосовые сообщения</div><div class="d">Распознаёт речь и отвечает текстом — до двух минут записи.</div></div></li>
+      </ul>
+    </div>
+  </section>
 
-  <h2>Документы</h2>
-  <div class="card">
-    <ul>
-      <li><a href="oferta.html">Публичная оферта</a></li>
-      <li><a href="privacy.html">Политика обработки персональных данных</a></li>
-      <li><a href="refund.html">Возврат денежных средств</a></li>
-    </ul>
-  </div>
-</main>
+  <section>
+    <div class="section-num">02 · Цена операции</div>
+    <div>
+      <h2>Сколько стоит каждый запрос</h2>
+      <ul class="list-editorial">
+        <li><span class="n">01</span><div><div class="t">Быстрый ответ — 1 кредит</div><div class="d">Короткий разбор без долгих рассуждений.</div></div></li>
+        <li><span class="n">02</span><div><div class="t">«Глубже» — 3 кредита</div><div class="d">Подробный разбор с проверкой логики.</div></div></li>
+        <li><span class="n">03</span><div><div class="t">«Максимум» — 8 кредитов</div><div class="d">Самая сильная модель, длинный ответ.</div></div></li>
+        <li><span class="n">04</span><div><div class="t">Фото задания — 2 кредита, поиск в интернете — плюс 2</div><div class="d">Распознавание снимка и работа с источниками.</div></div></li>
+        <li><span class="n">05</span><div><div class="t">Презентация или документ Word — 20 кредитов</div><div class="d">Картинка к слайду, таблица и дополнительный слайд — по 2 кредита. Доработка готовой презентации — 30, 45 или 65 кредитов по объёму правок.</div></div></li>
+      </ul>
+    </div>
+  </section>
 
-<footer>
-  <div class="wrap">
-    <p>© 2026 ИП Волков Юрий Андреевич · ИНН 560703696513 · <a href="mailto:dogandwolf0987@ya.ru">dogandwolf0987@ya.ru</a></p>
-    <p class="muted">Сервис не является официальным сервисом учебного заведения. Бот может ошибаться — проверяйте учебные материалы.</p>
-  </div>
-</footer>
+  <section>
+    <div class="section-num">03 · Пакеты</div>
+    <div>
+      <h2>Чем больше пакет, тем дешевле кредит</h2>
+      <table>
+        <caption>Пакеты кредитов · цены и бонусы</caption>
+        <thead>
+          <tr><th>Пакет</th><th>Цена</th><th>Начисляется</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Знакомство</td><td>10 ₽</td><td>10 кредитов</td></tr>
+          <tr><td>Пробный</td><td>20 ₽</td><td>21 кредит · бонус 5 %</td></tr>
+          <tr><td>Старт</td><td>50 ₽</td><td>55 кредитов · бонус 10 %</td></tr>
+          <tr><td>Студент</td><td>100 ₽</td><td>115 кредитов · бонус 15 %, самый популярный</td></tr>
+          <tr><td>Сессия</td><td>199 ₽</td><td>240 кредитов · бонус 20 %</td></tr>
+          <tr><td>Супер</td><td>299 ₽</td><td>375 кредитов · бонус 25 %</td></tr>
+          <tr><td>Максимум</td><td>499 ₽</td><td>650 кредитов · бонус 30 %, лучшая цена кредита</td></tr>
+        </tbody>
+      </table>
+      <p class="price-note">Кредиты не сгорают. Оплата — банковской картой или через СБП на защищённой платёжной странице. Фискальный чек приходит на указанный при оплате e-mail.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-num">04 · Начало</div>
+    <div>
+      <h2>Четыре шага до первого ответа</h2>
+      <ol>
+        <li>Откройте бота в MAX: <a href="https://max.ru/id560703696513_1_bot">max.ru/id560703696513_1_bot</a>.</li>
+        <li>Нажмите «Начать» — при первом запуске начисляются 30 кредитов бесплатно.</li>
+        <li>Задайте вопрос текстом, голосом или пришлите фото задания.</li>
+        <li>Для презентаций и документов выберите соответствующий пункт меню.</li>
+      </ol>
+      <p>
+        <span class="tag">Учебные вопросы</span><span class="tag">Фото заданий</span><span class="tag">Презентации</span><span class="tag">Word</span><span class="tag">Голос</span>
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-num">05 · Реквизиты</div>
+    <div>
+      <h2>Кто оказывает услугу</h2>
+      <p><strong>Исполнитель:</strong> Индивидуальный предприниматель Волков Юрий Андреевич<br>
+      <strong>ИНН:</strong> 560703696513 · <strong>ОГРНИП:</strong> 326565800103499</p>
+      <p><strong>E-mail для связи:</strong> <a href="mailto:windlnminemind@gmail.com">windlnminemind@gmail.com</a><br>
+      <strong>E-mail для чеков:</strong> <a href="mailto:dogandwolf0987@ya.ru">dogandwolf0987@ya.ru</a></p>
+      <p><strong>Сервис:</strong> бот «СтудПомощник» в мессенджере MAX — <a href="https://max.ru/id560703696513_1_bot">max.ru/id560703696513_1_bot</a></p>
+      <p class="muted">Услуги оказываются дистанционно через бота в MAX. Оплата принимается на защищённой платёжной странице с формированием фискального чека.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-num">06 · Документы</div>
+    <div>
+      <h2>Правила и обязательства</h2>
+      <ul>
+        <li><a href="oferta.html">Публичная оферта</a> — условия оказания услуг.</li>
+        <li><a href="privacy.html">Политика обработки персональных данных</a> — что бот хранит и кому передаёт.</li>
+        <li><a href="refund.html">Возврат денежных средств</a> — как вернуть неиспользованные кредиты.</li>
+      </ul>
+      <p class="muted">Сервис не является официальным сервисом учебного заведения. Бот может ошибаться — проверяйте учебные материалы.</p>
+    </div>
+  </section>
+
+  <footer class="colophon">
+    <span class="left">СтудПомощник</span>
+    <span class="right">© 2026 ИП Волков Юрий Андреевич · <a href="mailto:windlnminemind@gmail.com">windlnminemind@gmail.com</a></span>
+  </footer>
+
+</div>
+
 </body>
 </html>
