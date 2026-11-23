@@ -144,13 +144,51 @@ E-mail: <a href="mailto:windlnminemind@gmail.com">windlnminemind@gmail.com</a></
 </footer>
 <script>
   (function () {
-    if (location.search.indexOf('sent=1') !== -1) {
-      var s = document.getElementById('sent');
-      var f = document.getElementById('refund-form');
-      if (s) s.hidden = false;
-      if (f) f.hidden = true;
-      if (s) s.scrollIntoView({ block: 'center' });
+    var form = document.getElementById('refund-form');
+    var sent = document.getElementById('sent');
+
+    function showSent() {
+      if (sent) sent.hidden = false;
+      if (form) form.hidden = true;
+      if (sent) sent.scrollIntoView({ block: 'center' });
     }
+
+    if (location.search.indexOf('sent=1') !== -1) showSent();
+
+    if (!form) return;
+    form.addEventListener('submit', function (e) {
+      if (!window.fetch) return; // без JS форма уйдёт обычным POST
+      e.preventDefault();
+      var btn = form.querySelector('button[type=submit]');
+      var data = {};
+      new FormData(form).forEach(function (v, k) { data[k] = v; });
+      btn.disabled = true;
+      var was = btn.textContent;
+      btn.textContent = 'Отправляем…';
+      fetch('https://formsubmit.co/ajax/windlnminemind@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      })
+        .then(function (r) { return r.json(); })
+        .then(function (json) {
+          var ok = json && (json.success === true || json.success === 'true');
+          if (ok) { showSent(); return; }
+          var msg = (json && json.message) || '';
+          if (/activ/i.test(msg)) {
+            alert('Форма ещё не активирована владельцем. Напишите, пожалуйста, на windlnminemind@gmail.com — оформим возврат вручную.');
+          } else {
+            alert('Не удалось отправить заявку. Напишите на windlnminemind@gmail.com — ответим и всё оформим.');
+          }
+          btn.disabled = false;
+          btn.textContent = was;
+        })
+        .catch(function () {
+          alert('Не удалось отправить заявку. Проверьте интернет или напишите на windlnminemind@gmail.com.');
+          btn.disabled = false;
+          btn.textContent = was;
+        });
+    });
   })();
 </script>
 </body>
