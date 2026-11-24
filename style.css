@@ -1,266 +1,241 @@
-/* СтудПомощник — редакционная система: тёплая бумага, серифы, линейки вместо воздуха.
-   Стиль: «Редакционная» (газетная вёрстка, очерк в журнале). */
+/* СтудПомощник — «Архитектурная фотография» (Design Studio).
+   Бетон, выправленные вертикали, ритм окон, подписи по сетке, тонкие линейки.
+   Палитра: #D9D9D4 фон · #8C959C приглушённый · #2B2F33 чернила · #C0B096 песок · #F2F2EF свет */
 
-@font-face{
-  font-family:'Playfair Display';
-  src:url('fonts/playfair-display-cyr-400.woff2') format('woff2');
-  font-weight:400; font-style:normal; font-display:swap;
-}
-@font-face{
-  font-family:'Playfair Display';
-  src:url('fonts/playfair-display-cyr-700.woff2') format('woff2');
-  font-weight:700; font-style:normal; font-display:swap;
-}
-@font-face{
-  font-family:'PT Serif';
-  src:url('fonts/pt-serif-cyr-400.woff2') format('woff2');
-  font-weight:400; font-style:normal; font-display:swap;
-}
-@font-face{
-  font-family:'PT Serif';
-  src:url('fonts/pt-serif-cyr-700.woff2') format('woff2');
-  font-weight:700; font-style:normal; font-display:swap;
-}
+@font-face{font-family:'PT Sans Narrow';src:url('fonts/pt-sans-narrow-cyr-400.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'PT Sans Narrow';src:url('fonts/pt-sans-narrow-cyr-700.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:'JetBrains Mono';src:url('fonts/jetbrains-mono-cyr-400.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'JetBrains Mono';src:url('fonts/jetbrains-mono-cyr-700.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
 
 :root{
-  --paper:#EBE4D2;
-  --paper-edge:#E3DBC5;
-  --ink:#1D1B16;
-  --ink-soft:#3B372D;
-  --muted:#6E6653;
-  --accent:#A3372A;
-  --rule:rgba(29,27,22,.22);
-  --serif:'PT Serif',Georgia,'Times New Roman',serif;
-  --display:'Playfair Display',Georgia,serif;
+  --bg:#D9D9D4;
+  --muted:#8C959C;
+  --ink:#2B2F33;
+  --accent:#C0B096;
+  --light:#F2F2EF;
+  --rule:rgba(43,47,51,.28);
+  --rule-soft:rgba(43,47,51,.14);
+  --sans:'PT Sans Narrow','Arial Narrow',Arial,sans-serif;
+  --mono:'JetBrains Mono',Consolas,monospace;
 }
 
 *{box-sizing:border-box}
-
-html{background:var(--paper)}
+html{background:var(--bg)}
 body{
-  margin:0;
-  background:var(--paper);
-  color:var(--ink);
-  font-family:var(--serif);
-  font-size:18px;
-  line-height:1.55;
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:var(--sans);font-size:17px;line-height:1.45;letter-spacing:.02em;
   -webkit-font-smoothing:antialiased;
-  text-rendering:optimizeLegibility;
 }
+/* чертёжная сетка на фоне */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:repeating-linear-gradient(90deg,var(--rule-soft) 0 1px,transparent 1px 96px);
+  opacity:.5;
+}
+body>*{position:relative;z-index:1}
 
-.wrap{max-width:1080px;margin:0 auto;padding:0 40px 88px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 40px 96px}
 
 a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule)}
-a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+a:hover{color:var(--ink);border-bottom-color:var(--ink);background:var(--accent)}
 
-/* ---------- шапка и рубрики ---------- */
+/* ───────── шапка: как штамп на чертеже ───────── */
 .masthead{
-  max-width:1080px;margin:0 auto;padding:14px 40px 12px;
+  max-width:1180px;margin:0 auto;padding:16px 40px 13px;
   display:flex;justify-content:space-between;align-items:baseline;gap:24px;
-  border-top:3px solid var(--ink);
-  border-bottom:1px solid var(--rule);
-  font-size:11px;letter-spacing:.18em;text-transform:uppercase;
-  font-weight:700;
+  border-top:2px solid var(--ink);border-bottom:1px solid var(--rule);
+  font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
 }
-.masthead .brand{letter-spacing:.22em}
-.masthead .meta{font-weight:400;color:var(--muted);letter-spacing:.12em;text-align:right}
+.masthead .brand{font-weight:700;letter-spacing:.26em}
+.masthead .meta{color:var(--muted);font-weight:400;text-align:right;letter-spacing:.1em}
 
 .rubrics{
-  max-width:1080px;margin:0 auto;padding:11px 40px 10px;
-  display:flex;flex-wrap:wrap;gap:28px;
+  max-width:1180px;margin:0 auto;padding:10px 40px 9px;
+  display:flex;flex-wrap:wrap;gap:26px;
   border-bottom:1px solid var(--rule);
-  font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
 }
 .rubrics a{border-bottom:0;color:var(--muted)}
-.rubrics a:hover{color:var(--accent)}
+.rubrics a:hover{color:var(--ink);background:none;border-bottom:1px solid var(--ink)}
 .rubrics a[aria-current="page"]{color:var(--ink);border-bottom:1px solid var(--ink);padding-bottom:2px}
 
-/* ---------- первая полоса ---------- */
-.lede{padding:52px 0 44px;border-bottom:1px solid var(--ink)}
+/* ───────── первая полоса ───────── */
+.lede{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,0.92fr);gap:48px;
+  padding:56px 0 48px;border-bottom:2px solid var(--ink);
+}
 .kicker{
-  display:inline-block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--accent);font-weight:700;margin-bottom:20px;
+  display:block;font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:26px;
 }
-.kicker::before{content:"●";font-size:8px;vertical-align:2px;margin-right:8px}
+.kicker::before{content:"";display:inline-block;width:22px;height:1px;background:var(--ink);vertical-align:4px;margin-right:10px}
 h1{
-  font-family:var(--display);font-weight:700;
-  font-size:clamp(40px,6.4vw,82px);line-height:.96;letter-spacing:-.015em;
-  margin:0 0 22px;max-width:16ch;
+  font-family:var(--sans);font-weight:400;text-transform:uppercase;
+  font-size:clamp(40px,5.6vw,86px);line-height:.94;letter-spacing:.03em;
+  margin:0 0 24px;max-width:15ch;
 }
-.deck{
-  font-size:clamp(18px,2vw,22px);line-height:1.42;color:var(--ink-soft);
-  max-width:52ch;margin:0 0 28px;
-}
-.actions{display:flex;flex-wrap:wrap;gap:28px;align-items:baseline}
+.deck{font-size:17px;line-height:1.5;color:var(--ink);max-width:50ch;margin:0 0 18px;letter-spacing:.02em}
+.actions{display:flex;flex-wrap:wrap;gap:26px;align-items:center;margin-top:30px}
 .cta{
-  font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;
-  border-bottom:1px solid var(--ink);padding-bottom:4px;
+  display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  border:1px solid var(--ink);padding:13px 20px;background:var(--ink);color:var(--light);
 }
-.cta::after{content:" →"}
-.cta.quiet{color:var(--muted);border-bottom-color:var(--rule);font-weight:400}
+.cta:hover{background:var(--accent);border-color:var(--ink);color:var(--ink)}
+.cta.quiet{background:transparent;color:var(--ink);border-color:var(--rule)}
+.cta.quiet:hover{background:var(--light)}
 
-/* ---------- полосы-разделы ---------- */
+/* фасад: ритм окон, нарисованный кодом */
+.facade{position:relative;min-height:380px;border:1px solid var(--ink);background:var(--light);overflow:hidden}
+.facade::before{
+  content:"";position:absolute;inset:26px 26px 64px;border:1px solid var(--rule);
+  background-image:
+    repeating-linear-gradient(90deg,transparent 0 40px,var(--rule) 40px 41px),
+    repeating-linear-gradient(0deg,transparent 0 40px,var(--rule) 40px 41px);
+  background-color:var(--light);
+}
+.facade::after{
+  content:"";position:absolute;left:26px;right:26px;bottom:26px;height:22px;
+  background:
+    repeating-linear-gradient(90deg,var(--ink) 0 12px,transparent 12px 40px);
+  opacity:.85;
+}
+.facade .plate{
+  position:absolute;right:26px;top:26px;background:var(--accent);color:var(--ink);
+  font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;padding:7px 10px;
+}
+.facade .plan{
+  position:absolute;left:26px;bottom:64px;font-family:var(--mono);font-size:9px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--muted);
+}
+
+/* ───────── полосы-разделы ───────── */
 section{
-  display:grid;grid-template-columns:104px minmax(0,1fr);gap:28px;
-  padding:34px 0 30px;border-bottom:1px solid var(--rule);
+  display:grid;grid-template-columns:132px minmax(0,1fr);gap:36px;
+  padding:38px 0 34px;border-bottom:1px solid var(--rule);
 }
 section:last-of-type{border-bottom:0}
 .section-num{
-  font-size:11px;letter-spacing:.18em;font-weight:700;text-transform:uppercase;
-  color:var(--muted);padding-top:6px;
+  font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted);padding-top:7px;
 }
+.section-num b{display:block;font-size:22px;letter-spacing:.04em;color:var(--ink);font-weight:400;margin-bottom:6px}
 section h2{
-  font-family:var(--display);font-weight:700;
-  font-size:clamp(24px,3vw,34px);line-height:1.08;letter-spacing:-.01em;
-  margin:0 0 16px;
+  font-family:var(--sans);font-weight:400;text-transform:uppercase;
+  font-size:clamp(22px,2.6vw,32px);line-height:1.02;letter-spacing:.04em;margin:0 0 20px;
 }
-section h3{
-  font-family:var(--serif);font-weight:700;font-size:16px;
-  margin:26px 0 6px;letter-spacing:.01em;
-}
+section h3{font-family:var(--sans);font-weight:700;font-size:17px;margin:24px 0 6px}
 section p{margin:0 0 14px;max-width:66ch}
-section ul,section ol{margin:0 0 14px;padding-left:1.15em;max-width:66ch}
-section li{margin:0 0 8px}
-section ul{list-style:none;padding-left:0}
-section ul li{position:relative;padding-left:22px}
-section ul li::before{
-  content:"—";position:absolute;left:0;color:var(--accent);
-}
+ul,ol{margin:0 0 14px;padding-left:1.1em;max-width:66ch}
+li{margin:0 0 7px}
 
-/* список-очерк: номер, заголовок, пояснение */
-.list-editorial{list-style:none;margin:0;padding:0;max-width:none}
+ul.list-editorial{list-style:none;margin:0;padding:0;max-width:none}
 .list-editorial li{
-  display:grid;grid-template-columns:56px minmax(0,1fr);gap:0 20px;
-  padding:16px 0;border-top:1px solid var(--rule);margin:0;
+  display:grid;grid-template-columns:64px minmax(0,1fr);gap:0 22px;
+  padding:15px 0;border-top:1px solid var(--rule-soft);margin:0;
 }
 .list-editorial li:first-child{border-top:0}
-.list-editorial .n{
-  font-size:11px;letter-spacing:.16em;font-weight:700;color:var(--accent);padding-top:5px;
-}
-.list-editorial .t{font-weight:700;font-size:17px}
-.list-editorial .d{color:var(--muted);font-size:15px;margin-top:2px}
+.list-editorial .n{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--muted);padding-top:5px}
+.list-editorial .t{font-weight:700;font-size:18px;letter-spacing:.02em}
+.list-editorial .d{color:var(--ink);opacity:.82;font-size:15px;margin-top:3px}
 
-/* ---------- таблицы и цены ---------- */
-table{width:100%;border-collapse:collapse;margin:8px 0 18px;font-variant-numeric:tabular-nums}
-caption{caption-side:top;text-align:left;font-size:11px;letter-spacing:.18em;
-  text-transform:uppercase;color:var(--muted);padding-bottom:10px}
+/* ───────── таблица-ведомость ───────── */
+table{width:100%;border-collapse:collapse;margin:6px 0 18px}
+caption{caption-side:top;text-align:left;font-family:var(--mono);font-size:10px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--muted);padding-bottom:12px}
 th{
-  text-align:left;font-size:11px;letter-spacing:.16em;text-transform:uppercase;
-  font-weight:700;color:var(--muted);
-  border-bottom:1px solid var(--ink);padding:0 0 8px;
+  text-align:left;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  font-weight:400;color:var(--muted);border-bottom:1px solid var(--ink);padding:0 0 9px;
 }
-td{padding:11px 0;border-bottom:1px solid var(--rule);vertical-align:baseline}
-th:last-child,td:last-child{text-align:right}
-tbody tr:hover td{background:var(--paper-edge)}
+td{padding:12px 0;border-bottom:1px solid var(--rule-soft);vertical-align:baseline}
+th:last-child,td:last-child{text-align:right;font-family:var(--mono);font-size:13px;letter-spacing:.04em}
+tbody tr:hover td{background:var(--light)}
+.price-note{color:var(--muted);font-size:15px;max-width:62ch}
 
-.price-lead{font-weight:700}
-.price-note{color:var(--muted);font-size:14px;max-width:60ch}
+/* ───────── форма ───────── */
+.form{margin:24px 0 10px;padding:0;border:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 32px}
+.form .field{display:flex;flex-direction:column;gap:6px}
+.form .field.wide{grid-column:1 / -1}
+.form label{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.form label .req{color:#8A5A34}
+.form input[type=text],.form input[type=email],.form input[type=number],.form input[type=date],.form select,.form textarea{
+  font-family:var(--sans);font-size:17px;color:var(--ink);letter-spacing:.02em;
+  background:var(--light);border:1px solid var(--rule);border-radius:0;padding:10px 12px;width:100%;
+}
+.form textarea{min-height:104px;resize:vertical}
+.form input:focus,.form select:focus,.form textarea:focus{outline:none;border-color:var(--ink);background:#fff}
+.form .hint{font-size:13px;color:var(--muted)}
+.form .check{display:flex;gap:12px;align-items:flex-start;font-family:var(--sans);font-size:15px;text-transform:none;letter-spacing:0}
+.form .check input{width:16px;height:16px;margin-top:3px;accent-color:var(--ink)}
+.form-actions{grid-column:1 / -1;display:flex;flex-wrap:wrap;gap:22px;align-items:center;padding-top:8px}
+.form button{
+  font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--light);background:var(--ink);border:1px solid var(--ink);padding:14px 26px;cursor:pointer;
+}
+.form button:hover{background:var(--accent);color:var(--ink)}
+.form-note{font-size:14px;color:var(--muted);max-width:46ch}
+.notice{border-left:2px solid var(--accent);padding:2px 0 2px 16px;margin:22px 0;font-size:16px;max-width:70ch}
+.sent{border:1px solid var(--ink);background:var(--light);padding:18px 20px;margin:22px 0;max-width:70ch;font-size:16px}
+.sent strong{font-weight:700;text-transform:uppercase;letter-spacing:.06em}
 
-/* ---------- служебные классы совместимости ---------- */
-.card{background:transparent;border:0;border-radius:0;box-shadow:none;padding:0;margin:0}
+/* встроенная форма-документ */
+.doc-frame{border:1px solid var(--ink);background:var(--light);margin:22px 0 8px}
+.doc-frame .bar{
+  display:flex;justify-content:space-between;gap:16px;align-items:center;
+  border-bottom:1px solid var(--rule);padding:10px 14px;
+  font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+}
+.doc-frame iframe{display:block;width:100%;height:640px;border:0;background:#fff}
+
+/* ───────── служебные ───────── */
 .muted{color:var(--muted);font-size:15px}
 .tag{
-  display:inline-block;font-size:10px;letter-spacing:.16em;text-transform:uppercase;
-  border:1px solid var(--rule);padding:4px 9px;margin:0 8px 8px 0;color:var(--muted);
+  display:inline-block;font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;
+  border:1px solid var(--rule);padding:5px 9px;margin:0 8px 8px 0;color:var(--muted);background:var(--light);
 }
 .btn{
-  display:inline-block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;
-  font-weight:700;border-bottom:1px solid var(--ink);padding-bottom:4px;margin-right:24px;
+  display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  border:1px solid var(--ink);padding:12px 18px;margin:0 12px 12px 0;color:var(--ink);
 }
-.btn.secondary{color:var(--muted);border-bottom-color:var(--rule);font-weight:400}
+.btn:hover{background:var(--ink);color:var(--light)}
+.btn.secondary{border-color:var(--rule);color:var(--muted)}
 
-/* ---------- юридические страницы ---------- */
-.page-head{padding:44px 0 26px;border-bottom:1px solid var(--ink)}
-.page-head h1{font-size:clamp(32px,4.6vw,56px);max-width:22ch;margin-bottom:14px}
-.page-head .muted{margin:0}
-.legal h1{font-size:clamp(30px,4.4vw,54px);max-width:24ch;margin:38px 0 12px}
-.legal{padding-top:6px}
+/* ───────── юридические страницы ───────── */
+.wrap.legal{max-width:900px}
+.legal h1{font-size:clamp(30px,3.6vw,46px);max-width:26ch;margin:34px 0 10px}
 .legal h2{
-  font-family:var(--display);font-weight:700;font-size:clamp(20px,2.4vw,26px);
-  line-height:1.15;margin:34px 0 12px;padding-top:14px;border-top:1px solid var(--rule);
+  font-size:clamp(19px,2.1vw,24px);line-height:1.1;margin:34px 0 12px;padding-top:14px;
+  border-top:1px solid var(--rule);text-transform:uppercase;
 }
-.legal h2:first-of-type{border-top:0;margin-top:22px}
-.legal p,.legal li{font-size:17px;max-width:76ch}
-.legal .back{
-  margin-top:36px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;
-  border-top:1px solid var(--rule);padding-top:18px;
-}
+.legal h2:first-of-type{border-top:0;margin-top:20px}
+.legal p,.legal li{max-width:74ch}
+.legal .back{margin-top:34px;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  border-top:1px solid var(--rule);padding-top:16px}
 .legal .back a{border-bottom:0}
 
-/* ---------- заявка (форма возврата) ---------- */
-.form{
-  margin:26px 0 10px;padding:0;border:0;
-  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 32px;
-  max-width:none;
-}
-.form .field{display:flex;flex-direction:column;gap:7px}
-.form .field.wide{grid-column:1 / -1}
-.form label{
-  font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--muted);
-}
-.form label .req{color:var(--accent)}
-.form input[type=text],.form input[type=email],.form input[type=number],.form input[type=date],.form select,.form textarea{
-  font-family:var(--serif);font-size:16px;color:var(--ink);
-  background:transparent;border:0;border-bottom:1px solid var(--ink);
-  border-radius:0;padding:9px 0;width:100%;
-  -webkit-appearance:none;appearance:none;
-}
-.form select{
-  background-image:linear-gradient(45deg,transparent 49%,var(--ink) 50%),linear-gradient(-45deg,transparent 49%,var(--ink) 50%);
-  background-position:calc(100% - 12px) 55%,calc(100% - 7px) 55%;
-  background-size:5px 5px,5px 5px;background-repeat:no-repeat;
-}
-.form textarea{min-height:96px;resize:vertical;border:1px solid var(--rule);padding:12px}
-.form input:focus,.form select:focus,.form textarea:focus{outline:none;border-color:var(--accent)}
-.form .hint{font-size:13px;color:var(--muted);line-height:1.4}
-.form .check{display:flex;gap:12px;align-items:flex-start;font-size:15px;color:var(--ink-soft);text-transform:none;letter-spacing:0;font-weight:400}
-.form .check input{width:16px;height:16px;margin-top:3px;accent-color:var(--accent)}
-.form-actions{grid-column:1 / -1;display:flex;flex-wrap:wrap;gap:24px;align-items:center;padding-top:6px}
-.form button{
-  font-family:var(--serif);font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;
-  color:var(--paper);background:var(--ink);border:1px solid var(--ink);
-  padding:14px 26px;cursor:pointer;
-}
-.form button:hover{background:var(--accent);border-color:var(--accent)}
-.form-note{font-size:13px;color:var(--muted);max-width:52ch}
-.notice{
-  border-left:2px solid var(--accent);padding:2px 0 2px 16px;margin:22px 0;
-  font-size:15px;color:var(--ink-soft);max-width:70ch;
-}
-.sent{
-  border:1px solid var(--rule);padding:18px 20px;margin:22px 0;max-width:70ch;
-  font-size:16px;
-}
-.sent strong{font-family:var(--display);font-size:20px}
-
-/* ---------- подвал ---------- */
+/* ───────── подвал ───────── */
 .colophon{
-  max-width:1080px;margin:0 auto;padding:18px 40px 0;
+  max-width:1180px;margin:0 auto;padding:18px 40px 0;
   display:flex;justify-content:space-between;align-items:baseline;gap:24px;flex-wrap:wrap;
-  border-top:3px solid var(--ink);
-  font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  border-top:2px solid var(--ink);
+  font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
 }
-.colophon .left{font-weight:700;letter-spacing:.2em}
+.colophon .left{font-weight:700;letter-spacing:.24em}
 .colophon .right{color:var(--muted);font-weight:400}
 .colophon a{border-bottom:0;color:var(--muted)}
+.colophon a:hover{color:var(--ink);background:none}
 
-/* ---------- адаптив ---------- */
-@media (max-width:860px){
-  body{font-size:17px}
+/* ───────── адаптив ───────── */
+@media (max-width:960px){
+  .lede{grid-template-columns:1fr;gap:32px;padding:38px 0 34px}
+  .facade{min-height:260px}
+  section{grid-template-columns:1fr;gap:10px;padding:28px 0 24px}
   .wrap{padding:0 22px 64px}
-  .masthead{padding:12px 22px 10px}
-  .rubrics{padding:10px 22px 9px}
-  .colophon{padding:16px 22px 0}
-  section{grid-template-columns:1fr;gap:8px;padding:26px 0 22px}
-  .section-num{padding-top:0}
-  .lede{padding:34px 0 30px}
-  .masthead{flex-direction:column;gap:6px}
+  .masthead{padding:12px 22px 10px;flex-direction:column;gap:6px}
   .masthead .meta{text-align:left}
-  .rubrics{gap:16px}
-  .list-editorial li{grid-template-columns:40px minmax(0,1fr)}
+  .rubrics{padding:9px 22px 8px;gap:16px}
+  .colophon{padding:16px 22px 0}
+  .form{grid-template-columns:1fr}
+  .list-editorial li{grid-template-columns:44px minmax(0,1fr)}
+  .doc-frame iframe{height:720px}
 }
-@media print{
-  body{background:#fff}
-  .rubrics,.actions{display:none}
-  a{border-bottom:0}
-}
+@media print{body::before{display:none}.rubrics,.actions{display:none}a{border-bottom:0}}
