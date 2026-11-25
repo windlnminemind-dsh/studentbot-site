@@ -71,8 +71,8 @@ a:hover{color:var(--ink);border-bottom-color:var(--ink);background:var(--accent)
 .kicker::before{content:"";display:inline-block;width:22px;height:1px;background:var(--ink);vertical-align:4px;margin-right:10px}
 h1{
   font-family:var(--sans);font-weight:400;text-transform:uppercase;
-  font-size:clamp(40px,5.6vw,86px);line-height:.94;letter-spacing:.03em;
-  margin:0 0 24px;max-width:15ch;
+  font-size:clamp(40px,5vw,82px);line-height:.94;letter-spacing:.03em;
+  margin:0 0 24px;max-width:18ch;
 }
 .deck{font-size:17px;line-height:1.5;color:var(--ink);max-width:50ch;margin:0 0 18px;letter-spacing:.02em}
 .actions{display:flex;flex-wrap:wrap;gap:26px;align-items:center;margin-top:30px}
@@ -102,10 +102,6 @@ h1{
 .facade .plate{
   position:absolute;right:26px;top:26px;background:var(--accent);color:var(--ink);
   font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;padding:7px 10px;
-}
-.facade .plan{
-  position:absolute;left:26px;bottom:64px;font-family:var(--mono);font-size:9px;letter-spacing:.18em;
-  text-transform:uppercase;color:var(--muted);
 }
 
 /* ───────── полосы-разделы ───────── */
@@ -239,3 +235,164 @@ tbody tr:hover td{background:var(--light)}
   .doc-frame iframe{height:720px}
 }
 @media print{body::before{display:none}.rubrics,.actions{display:none}a{border-bottom:0}}
+
+/* ═════════════════════════════════════════════════════════════════
+   Доработка витрины 26.11.2026. Тот же язык: линейки, моно-подписи,
+   никаких карточек, теней и скруглений. Только новые блоки.
+   ═════════════════════════════════════════════════════════════════ */
+
+/* ───────── герой: легенда на фасаде ───────── */
+.facade-wrap{display:flex;flex-direction:column;min-width:0}
+.facade-wrap .facade{flex:1 1 auto}
+.figure-note{
+  font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted);margin:9px 0 0;max-width:none;
+}
+.facade-legend{
+  position:absolute;left:26px;right:26px;bottom:88px;top:auto;z-index:2;
+  background:rgba(242,242,239,.96);border:1px solid var(--rule);
+  padding:14px 16px;
+}
+.facade-legend .legend-title{
+  display:block;font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:10px;
+}
+.facade-legend ul{list-style:none;margin:0;padding:0;max-width:none}
+.facade-legend li{
+  display:grid;grid-template-columns:26px minmax(0,1fr) auto;gap:12px;align-items:baseline;
+  padding:7px 0;border-top:1px solid var(--rule-soft);margin:0;
+}
+.facade-legend li:first-child{border-top:0}
+.facade-legend .k{font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--muted)}
+.facade-legend .v{font-weight:700;font-size:16px;letter-spacing:.02em}
+.facade-legend .m{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+
+/* ───────── возможности: колонка цены ───────── */
+.list-editorial.with-cost li{grid-template-columns:64px minmax(0,1fr) 104px}
+.list-editorial.with-cost .c{
+  font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted);text-align:right;padding-top:7px;white-space:nowrap;
+}
+
+/* ───────── цена кредита и цена задачи ───────── */
+.rate{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 44px;
+  margin:22px 0 6px;border-top:1px solid var(--rule);
+}
+.rate>div{padding:16px 0 18px;border-bottom:1px solid var(--rule-soft)}
+.rate .rk{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+.rate .rv{display:block;font-size:27px;line-height:1.1;letter-spacing:.02em;margin-bottom:9px}
+.rate .rd{display:block;font-size:15px;line-height:1.45;opacity:.82;max-width:46ch}
+.rate + .price-note{margin-top:16px}
+
+/* ───────── примеры: три сценария ───────── */
+.scenarios{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--rule);margin-top:20px}
+.scenario{padding:20px 22px 8px;border-right:1px solid var(--rule-soft)}
+.scenario:first-child{padding-left:0}
+.scenario:last-child{border-right:0;padding-right:0}
+.scenario .s-label{
+  display:block;font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:12px;
+}
+.scenario blockquote{
+  margin:0 0 16px;padding-left:14px;border-left:2px solid var(--accent);
+  font-size:16px;line-height:1.45;letter-spacing:.02em;
+}
+.scenario .sk{
+  display:block;font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink);margin:0 0 4px;
+}
+.scenario p.step{margin:0 0 14px;font-size:15px;line-height:1.45;opacity:.85;max-width:none}
+
+/* ───────── схема чата ───────── */
+.visual{display:grid;grid-template-columns:minmax(0,470px) minmax(0,1fr);gap:46px;align-items:start;margin-top:20px}
+.chat-mock{border:1px solid var(--ink);background:var(--light)}
+.chat-head{
+  display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+  padding:9px 13px;border-bottom:1px solid var(--rule);
+  font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+}
+.chat-head b{font-weight:700;letter-spacing:.2em;color:var(--ink)}
+.chat-body{padding:16px 13px;display:grid;gap:9px}
+.chat-body .msg{
+  font-size:15px;line-height:1.4;padding:9px 12px;background:#fff;
+  border:1px solid var(--rule-soft);max-width:88%;
+}
+.chat-body .msg.me{margin-left:auto;background:var(--accent);border-color:var(--ink);max-width:82%}
+.chat-body .msg.file{
+  display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:baseline;
+  border-color:var(--ink);max-width:100%;
+}
+.chat-body .msg .mono{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.chat-keys{display:flex;flex-wrap:wrap;gap:7px;padding-top:2px}
+.chat-keys span{
+  border:1px solid var(--rule);background:#fff;padding:7px 9px;
+  font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);
+}
+.chat-foot{
+  display:flex;justify-content:space-between;gap:10px;
+  border-top:1px solid var(--rule);padding:8px 13px;
+  font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+}
+.chat-caption{
+  font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+  line-height:1.6;margin:10px 0 0;max-width:470px;
+}
+
+/* ───────── вопросы ───────── */
+.faq{margin:14px 0 0;border-top:1px solid var(--rule)}
+.faq details{border-bottom:1px solid var(--rule-soft)}
+.faq summary{
+  list-style:none;cursor:pointer;padding:14px 0;
+  display:grid;grid-template-columns:26px minmax(0,1fr);gap:0 10px;
+  font-weight:700;font-size:17px;letter-spacing:.02em;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::before{content:"+";font-family:var(--mono);font-size:13px;font-weight:400;color:var(--muted);padding-top:2px}
+.faq details[open] summary::before{content:"—"}
+.faq summary:hover::before{color:var(--ink)}
+.faq summary:focus-visible{outline:2px solid var(--ink);outline-offset:-2px}
+.faq .a{padding:0 0 16px 36px;font-size:16px;line-height:1.5;max-width:76ch;opacity:.9}
+.faq .a p{margin:0}
+
+/* ───────── адаптив новых блоков ───────── */
+@media (max-width:960px){
+  .facade{min-height:320px}
+  .facade-legend{bottom:64px;padding:11px 12px}
+  .facade-legend li{padding:5px 0}
+  .facade-legend .k{font-size:8px}
+  .facade-legend .v{font-size:14px}
+  .facade-legend .m{font-size:8px}
+  .facade .plate{font-size:9px;padding:6px 8px}
+  .list-editorial.with-cost li{grid-template-columns:44px minmax(0,1fr) auto}
+  .list-editorial.with-cost .c{font-size:9px;padding-top:5px}
+  .rate{grid-template-columns:1fr;gap:0}
+  .rate .rv{font-size:23px}
+  .scenarios{grid-template-columns:1fr}
+  .scenario{padding:16px 0 6px;border-right:0;border-bottom:1px solid var(--rule-soft)}
+  .scenario:last-child{border-bottom:0}
+  .visual{grid-template-columns:1fr;gap:28px}
+  .chat-caption{max-width:none}
+  .faq summary{font-size:16px}
+  .faq .a{padding-left:26px;font-size:15px}
+}
+
+/* таблица пакетов: на узком экране — строки в два ряда, без сжатых колонок */
+@media (max-width:640px){
+  .packs thead{display:none}
+  .packs table,.packs tbody{display:block;margin:0}
+  .packs caption{display:block;width:100%;padding-bottom:10px}
+  .packs tbody tr{
+    display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:14px;align-items:baseline;
+    padding:11px 0;border-bottom:1px solid var(--rule-soft);
+  }
+  .packs tbody tr:hover td{background:none}
+  .packs tbody td{border:0;padding:0;display:block}
+  .packs tbody td:nth-child(1){font-weight:700;font-size:16px;letter-spacing:.02em}
+  .packs tbody td:nth-child(2){font-family:var(--mono);font-size:13px;text-align:right;white-space:nowrap;letter-spacing:.04em}
+  .packs tbody td:last-child{
+    grid-column:1 / -1;margin-top:4px;text-align:left;white-space:normal;
+    font-family:var(--mono);font-size:10.5px;line-height:1.45;letter-spacing:.04em;color:var(--muted);
+    max-width:34ch;
+  }
+}
