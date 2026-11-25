@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="190" viewBox="0 0 300 190" role="img" fill="none" aria-label="Набор рукописных пометок: стрелка, звезда, подчёркивание, обводка, галочка, восклицательный знак">
+  <title>Рукописные пометки</title>
+  <desc>Спрайт из шести символов. Использование: &lt;use href="ill/ill-doodles.svg#d-arrow"&gt; или копирование нужных symbol инлайном.</desc>
+
+  <!-- ================== СИМВОЛЫ ================== -->
+  <symbol id="d-arrow" viewBox="0 0 48 48">
+    <path d="M8 40C18 36 10 24 22 18S38 15 42 20" stroke="#C0552F" stroke-width="2" stroke-linecap="round" fill="none"/>
+    <path d="M42 20l-9.5-3.4M42 20l-6 7.4" stroke="#C0552F" stroke-width="2" stroke-linecap="round" fill="none"/>
+  </symbol>
+
+  <symbol id="d-star" viewBox="0 0 48 48">
+    <path d="M24 7l4.2 11.2 12 0.6-9.4 7.4 3.2 11.5L24 31.2l-10 6.5 3.2-11.5-9.4-7.4 12-0.6Z" stroke="#23211D" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+  </symbol>
+
+  <symbol id="d-underline" viewBox="0 0 48 48">
+    <path d="M4 26c3-7 6 7 9 0s6-7 9 0 6 7 9 0 6-7 9 0" stroke="#C0552F" stroke-width="2" stroke-linecap="round" fill="none"/>
+  </symbol>
+
+  <symbol id="d-oval" viewBox="0 0 48 48">
+    <path d="M24 9C35 9 42 16 42 24S34 39 23 39 5 32 5 24 13 9 27 8.8" stroke="#C0552F" stroke-width="2" stroke-linecap="round" fill="none"/>
+  </symbol>
+
+  <symbol id="d-check" viewBox="0 0 48 48">
+    <path d="M8 26c5 3 8 7 12 11 6-9 13-18 22-26" stroke="#23211D" stroke-width="2" stroke-linecap="round" fill="none"/>
+  </symbol>
+
+  <symbol id="d-exclaim" viewBox="0 0 48 48">
+    <path d="M24 7c1.6 6 2.6 14 1.4 22" stroke="#C0552F" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+    <circle cx="24.6" cy="37.5" r="2.4" fill="#C0552F"/>
+  </symbol>
+
+  <!-- ================== ОБРАЗЕЦ (только для просмотра файла) ================== -->
+  <g>
+    <use href="#d-arrow" x="12" y="8" width="88" height="88"/>
+    <use href="#d-star" x="106" y="8" width="88" height="88"/>
+    <use href="#d-underline" x="200" y="8" width="88" height="88"/>
+    <use href="#d-oval" x="12" y="96" width="88" height="88"/>
+    <use href="#d-check" x="106" y="96" width="88" height="88"/>
+    <use href="#d-exclaim" x="200" y="96" width="88" height="88"/>
+  </g>
+</svg>
