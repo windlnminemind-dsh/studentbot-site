@@ -5,19 +5,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Возврат денежных средств — СтудПомощник</title>
 <meta name="description" content="Как вернуть неиспользованные кредиты СтудПомощника: заявка на возврат прямо на сайте, сроки, что удерживается.">
+<meta name="theme-color" content="#F4EEE2">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="masthead">
-  <span class="brand">СтудПомощник</span>
-  <span class="meta">ИП Волков Ю. А. · ИНН 560703696513 · MMXXVI</span>
+<a class="skip-link" href="#main">К содержанию</a>
+
+<header class="topbar">
+  <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">СП</span>СтудПомощник</a>
+  <nav class="nav" aria-label="Документы">
+    <a href="index.html">Главная</a>
+    <a href="oferta.html">Оферта</a>
+    <a href="privacy.html">Политика ПДн</a>
+    <a href="refund.html" aria-current="page">Возврат</a>
+  </nav>
+  <a class="btn btn--primary" href="https://max.ru/id560703696513_1_bot">Открыть бота<svg class="ico" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+<path d="M3.4 12h16.4M14 6l6 6-6 6"/>
+</svg></a>
 </header>
-<nav class="rubrics">
-  <a href="index.html">Главная</a>
-  <a href="oferta.html">Оферта</a>
-  <a href="privacy.html">Политика ПДн</a>
-  <a href="refund.html" aria-current="page">Возврат</a>
-</nav>
+<main id="main">
 <div class="wrap legal">
 <p class="back"><a href="index.html">← На главную</a></p>
 <h1>Возврат денежных средств</h1>
@@ -33,6 +40,8 @@
   <strong>Заявка отправлена.</strong> Мы получили её и ответим на указанный e-mail. Проверка — 1–2 рабочих дня, деньги возвращаются в срок до 10 рабочих дней с момента согласования.
 </div>
 
+<p class="form-error" id="form-error" role="alert" hidden></p>
+
 <form class="form" id="refund-form" action="https://formsubmit.co/windlnminemind@gmail.com" method="POST">
   <input type="hidden" name="_subject" value="СтудПомощник — заявка на возврат">
   <input type="hidden" name="_template" value="table">
@@ -41,7 +50,7 @@
 
   <div class="field">
     <label for="f-name">Имя и фамилия <span class="req">*</span></label>
-    <input id="f-name" name="Имя" type="text" required autocomplete="name" placeholder="Волков Юрий">
+    <input id="f-name" name="Имя" type="text" required autocomplete="name" placeholder="Иван Петров">
   </div>
   <div class="field">
     <label for="f-email">E-mail для ответа <span class="req">*</span></label>
@@ -49,7 +58,7 @@
   </div>
   <div class="field">
     <label for="f-user">ID в боте или телефон <span class="req">*</span></label>
-    <input id="f-user" name="ID в MAX" type="text" required placeholder="217226594">
+    <input id="f-user" name="ID в MAX" type="text" required placeholder="например, 123456789">
   </div>
   <div class="field">
     <label for="f-credits">Остаток кредитов</label>
@@ -115,7 +124,12 @@
       }
     }).catch(function (err) {
       if (btn) { btn.disabled = false; btn.textContent = old; }
-      alert('Не удалось отправить заявку: ' + err.message + '\nНапишите нам на windlnminemind@gmail.com — оформим вручную.');
+      var box = document.getElementById('form-error');
+      if (box) {
+        box.hidden = false;
+        box.textContent = 'Не удалось отправить заявку: ' + err.message + '. Напишите нам на windlnminemind@gmail.com — оформим вручную.';
+        box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
     });
   });
 })();
@@ -139,9 +153,17 @@ E-mail: <a href="mailto:windlnminemind@gmail.com">windlnminemind@gmail.com</a></
 
 <p class="back"><a href="index.html">← На главную</a></p>
 </div>
-<footer class="colophon">
-  <span class="left">СтудПомощник</span>
-  <span class="right">© 2026 ИП Волков Юрий Андреевич · <a href="mailto:windlnminemind@gmail.com">windlnminemind@gmail.com</a></span>
+</main>
+
+<footer class="footer wrap footer--legal">
+  <a class="f-brand" href="index.html">СтудПомощник</a>
+  <nav class="f-nav" aria-label="Документы">
+    <a href="oferta.html">Оферта</a>
+    <a href="privacy.html">Политика ПДн</a>
+    <a href="refund.html">Возврат</a>
+    <a href="mailto:windlnminemind@gmail.com">Почта</a>
+  </nav>
+  <p class="f-legal">© 2026 ИП Волков Юрий Андреевич · ИНН 560703696513 · ОГРНИП 326565800103499. Сервис не является официальным сервисом учебного заведения.</p>
 </footer>
 </body>
 </html>
