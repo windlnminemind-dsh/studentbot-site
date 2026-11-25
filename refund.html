@@ -29,13 +29,100 @@
 <h2 id="form">2. Заявка на возврат</h2>
 <p>Заполните форму ниже — заявка уйдёт на рабочую почту автоматически, отвечать письмом не нужно. Всё, что нужно для проверки: кто вы, когда и на сколько пополняли счёт и сколько кредитов осталось.</p>
 
-<div class="doc-frame">
-  <div class="bar"><span>Форма · заявка на возврат</span><span>Google Forms</span></div>
-  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScr4QTbDxD6bSSJsHUrysmUdO1bfxcEgHHaqCW6JdvKwJToOg/viewform?embedded=true" title="Заявка на возврат — СтудПомощник" loading="lazy">Загрузка формы…</iframe>
+<div class="sent" id="sent" hidden>
+  <strong>Заявка отправлена.</strong> Мы получили её и ответим на указанный e-mail. Проверка — 1–2 рабочих дня, деньги возвращаются в срок до 10 рабочих дней с момента согласования.
 </div>
 
+<form class="form" id="refund-form" action="https://formsubmit.co/windlnminemind@gmail.com" method="POST">
+  <input type="hidden" name="_subject" value="СтудПомощник — заявка на возврат">
+  <input type="hidden" name="_template" value="table">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+  <div class="field">
+    <label for="f-name">Имя и фамилия <span class="req">*</span></label>
+    <input id="f-name" name="Имя" type="text" required autocomplete="name" placeholder="Волков Юрий">
+  </div>
+  <div class="field">
+    <label for="f-email">E-mail для ответа <span class="req">*</span></label>
+    <input id="f-email" name="E-mail" type="email" required autocomplete="email" placeholder="you@example.com">
+  </div>
+  <div class="field">
+    <label for="f-user">ID в боте или телефон <span class="req">*</span></label>
+    <input id="f-user" name="ID в MAX" type="text" required placeholder="217226594">
+  </div>
+  <div class="field">
+    <label for="f-credits">Остаток кредитов</label>
+    <input id="f-credits" name="Остаток кредитов" type="text" placeholder="53">
+  </div>
+  <div class="field">
+    <label for="f-date">Дата платежа <span class="req">*</span></label>
+    <input id="f-date" name="Дата платежа" type="date" required>
+  </div>
+  <div class="field">
+    <label for="f-amount">Сумма, ₽ <span class="req">*</span></label>
+    <input id="f-amount" name="Сумма, руб." type="text" required placeholder="199">
+  </div>
+  <div class="field">
+    <label for="f-pay">Способ оплаты</label>
+    <select id="f-pay" name="Способ оплаты">
+      <option>Карта РФ</option>
+      <option>СБП</option>
+      <option>ЮMoney</option>
+      <option>Другое</option>
+    </select>
+  </div>
+  <div class="field">
+    <label for="f-back">Куда вернуть</label>
+    <input id="f-back" name="Куда вернуть" type="text" placeholder="тем же способом / номер карты без CVC">
+  </div>
+  <div class="field wide">
+    <label for="f-reason">Причина возврата</label>
+    <textarea id="f-reason" name="Причина" placeholder="Что не подошло, что уже использовали, сколько кредитов осталось"></textarea>
+  </div>
+  <div class="field wide">
+    <label class="check" for="f-consent">
+      <input id="f-consent" name="Согласие на обработку данных" type="checkbox" value="да" required>
+      <span>Согласен на обработку персональных данных в объёме заявки — <a href="privacy.html">политика обработки ПДн</a></span>
+    </label>
+  </div>
+  <div class="form-actions">
+    <button type="submit">Отправить заявку</button>
+    <span class="form-note">Заявка придёт на рабочую почту автоматически. Обычно отвечаем в тот же день.</span>
+  </div>
+</form>
+
+<script>
+(function () {
+  var form = document.getElementById('refund-form');
+  var sent = document.getElementById('sent');
+  if (!form) return;
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var btn = form.querySelector('button[type=submit]');
+    var old = btn ? btn.textContent : '';
+    if (btn) { btn.disabled = true; btn.textContent = 'Отправляем…'; }
+    fetch(form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/'), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(Object.fromEntries(new FormData(form).entries()))
+    }).then(function (r) { return r.json(); }).then(function (data) {
+      if (data && (data.success === 'true' || data.success === true)) {
+        form.hidden = true;
+        if (sent) { sent.hidden = false; sent.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+      } else {
+        throw new Error((data && (data.message || data.error)) || 'неизвестный ответ');
+      }
+    }).catch(function (err) {
+      if (btn) { btn.disabled = false; btn.textContent = old; }
+      alert('Не удалось отправить заявку: ' + err.message + '\nНапишите нам на windlnminemind@gmail.com — оформим вручную.');
+    });
+  });
+})();
+</script>
+
 <div class="notice">
-  Форма не открылась или удобнее письмом? Напишите на <a href="mailto:windlnminemind@gmail.com?subject=Возврат">windlnminemind@gmail.com</a> с темой «Возврат» — ответим и всё оформим. Заявку можно оставить и в боте: «Оплата и тарифы» → «Как сделать возврат».
+  Удобнее письмом? Напишите на <a href="mailto:windlnminemind@gmail.com?subject=Возврат">windlnminemind@gmail.com</a> с темой «Возврат» — ответим и всё оформим. Заявку можно оставить и в боте: «Оплата и тарифы» → «Как сделать возврат».
 </div>
 <h2>3. Сроки и способ</h2>
 <p>Возврат производится тем же способом, которым была произведена оплата, в срок до 10 рабочих дней с момента согласования заявления. Срок зачисления на карту зависит от банка и обычно составляет 1–5 рабочих дней.</p>
@@ -56,54 +143,5 @@ E-mail: <a href="mailto:windlnminemind@gmail.com">windlnminemind@gmail.com</a></
   <span class="left">СтудПомощник</span>
   <span class="right">© 2026 ИП Волков Юрий Андреевич · <a href="mailto:windlnminemind@gmail.com">windlnminemind@gmail.com</a></span>
 </footer>
-<script>
-  (function () {
-    var form = document.getElementById('refund-form');
-    var sent = document.getElementById('sent');
-
-    function showSent() {
-      if (sent) sent.hidden = false;
-      if (form) form.hidden = true;
-      if (sent) sent.scrollIntoView({ block: 'center' });
-    }
-
-    if (location.search.indexOf('sent=1') !== -1) showSent();
-
-    if (!form) return;
-    form.addEventListener('submit', function (e) {
-      if (!window.fetch) return; // без JS форма уйдёт обычным POST
-      e.preventDefault();
-      var btn = form.querySelector('button[type=submit]');
-      var data = {};
-      new FormData(form).forEach(function (v, k) { data[k] = v; });
-      btn.disabled = true;
-      var was = btn.textContent;
-      btn.textContent = 'Отправляем…';
-      fetch('https://formsubmit.co/ajax/windlnminemind@gmail.com', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(data)
-      })
-        .then(function (r) { return r.json(); })
-        .then(function (json) {
-          var ok = json && (json.success === true || json.success === 'true');
-          if (ok) { showSent(); return; }
-          var msg = (json && json.message) || '';
-          if (/activ/i.test(msg)) {
-            alert('Форма ещё не активирована владельцем. Напишите, пожалуйста, на windlnminemind@gmail.com — оформим возврат вручную.');
-          } else {
-            alert('Не удалось отправить заявку. Напишите на windlnminemind@gmail.com — ответим и всё оформим.');
-          }
-          btn.disabled = false;
-          btn.textContent = was;
-        })
-        .catch(function () {
-          alert('Не удалось отправить заявку. Проверьте интернет или напишите на windlnminemind@gmail.com.');
-          btn.disabled = false;
-          btn.textContent = was;
-        });
-    });
-  })();
-</script>
 </body>
 </html>
