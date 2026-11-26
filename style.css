@@ -307,6 +307,8 @@ html.has-js .punch .word.is-in{opacity:1;transform:none}
 .notice-card .tile{background:var(--paper-2);width:42px;height:42px;border-radius:12px}
 .notice-card strong{display:block;font-family:var(--display);font-size:21px;line-height:1.15;margin:0 0 3px}
 .notice-card p{margin:0;font-size:16px;line-height:1.5;color:var(--ink-2)}
+.notice-card .actions{margin:14px 0 0}
+.subscribe + .notice-card p:not(.actions){max-width:88ch}
 .tags{margin:22px 0 0}
 .tag{
   display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;
@@ -472,6 +474,8 @@ tr.is-popular:hover td{background:#EFCDBD}
 .sub-copy p{margin:0;font-size:16px;line-height:1.5;color:#FFE8DC;max-width:54ch}
 .subscribe .btn{position:relative;z-index:1;background:var(--paper-2);color:var(--ink);border-color:var(--ink);box-shadow:4px 4px 0 rgba(0,0,0,.20)}
 .subscribe .btn:hover{background:var(--ochre-soft);color:var(--ink);box-shadow:6px 6px 0 rgba(0,0,0,.24)}
+.sub-copy .actions{margin:18px 0 0;max-width:none}
+.subscribe + .notice-card{margin-top:26px}
 
 /* ───────── реквизиты и документы ───────── */
 .info-card{
