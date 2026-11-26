@@ -346,6 +346,37 @@ tr.is-popular:hover td{background:#EFCDBD}
 .rate-text{margin:0;font-size:16px;line-height:1.5;color:var(--ink-2)}
 .price-note{font-size:15px;line-height:1.55;color:var(--ink-3);margin:18px 2px 0;max-width:68ch}
 
+/* ───────── принимаем к оплате ───────── */
+.pay{
+  margin-top:20px;padding:20px 24px 22px;
+  background:var(--paper-2);border:1.5px solid var(--ink);border-radius:var(--r);
+  box-shadow:var(--shadow);
+}
+.pay-cap{
+  margin:0 0 14px;font-family:var(--mono);font-size:11px;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--ink);
+}
+.pay-row{display:flex;flex-wrap:wrap;align-items:stretch;gap:10px;margin:0;padding:0;list-style:none}
+.pay-row li{
+  display:flex;align-items:center;justify-content:center;flex:none;
+  padding:10px 16px;background:#fff;border:1px solid var(--line-soft);border-radius:12px;
+}
+.pay-row img{display:block;height:26px;width:auto;max-width:100%}
+.pay-note{margin:14px 0 0;font-size:14.5px;line-height:1.5;color:var(--ink-3);max-width:74ch}
+@media (max-width:960px) and (min-width:641px){
+  .pay-row{gap:8px}
+  .pay-row li{padding:9px 10px}
+}
+@media (max-width:640px){
+  .pay{padding:16px 14px 18px}
+  .pay-cap{margin:0 0 12px;font-size:10px}
+  .pay-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+  .pay-row li{padding:9px 6px}
+  .pay-row li:nth-child(3n+1):last-child{grid-column:2}
+  .pay-row img{height:22px}
+  .pay-note{font-size:13.5px}
+}
+
 /* ───────── сценарии ───────── */
 .scenarios{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:stretch}
 .scenario{
@@ -488,6 +519,12 @@ tr.is-popular:hover td{background:#EFCDBD}
 .f-nav a:hover{color:var(--terracotta-deep);text-decoration:underline}
 .f-legal{flex-basis:100%;font-size:13.5px;line-height:1.55;color:var(--ink-3);max-width:70ch;margin:0}
 .f-legal a{color:var(--ink-2)}
+.f-pay{flex-basis:100%;display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:0}
+.f-pay .f-pay-cap{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);white-space:nowrap}
+.f-pay ul{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0;padding:0;list-style:none}
+.f-pay li{display:flex;align-items:center;padding:5px 9px;background:#fff;border:1px solid var(--line-soft);border-radius:8px}
+.f-pay img{display:block;height:16px;width:auto}
+@media (max-width:640px){.f-pay img{height:15px}.f-pay li{padding:4px 7px}}
 .footer--legal{width:min(900px,calc(100% - 80px))}
 @media (max-width:960px){.footer--legal{width:calc(100% - 44px)}}
 @media (max-width:640px){.footer--legal{width:calc(100% - 36px)}}
