@@ -83,7 +83,11 @@
   </div>
   <div class="field">
     <label for="f-back">Куда вернуть</label>
-    <input id="f-back" name="Куда вернуть" type="text" placeholder="тем же способом / номер карты без CVC">
+    <select id="f-back" name="Куда вернуть">
+      <option>На карту, с которой платили</option>
+      <option>По СБП на тот же номер</option>
+      <option>Другое — уточним письмом</option>
+    </select>
   </div>
   <div class="field wide">
     <label for="f-reason">Причина возврата</label>
