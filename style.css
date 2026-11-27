@@ -71,7 +71,7 @@ a:hover{text-decoration-color:var(--terracotta-deep);color:var(--terracotta-deep
 .ico{width:24px;height:24px;flex:none;display:block}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .skip-link{position:absolute;left:16px;top:-64px;z-index:200;padding:12px 18px;background:var(--ink);color:var(--paper-2);border-radius:0 0 12px 12px;font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.08em;text-decoration:none;transition:top .2s var(--ease)}
-.skip-link:focus{top:0;color:var(--paper-2)}
+.skip-link:focus{top:0;color:var(--paper-2)}.skip-link:hover{color:var(--paper-2);background:var(--ink)}
 
 /* ───────── верхняя панель ───────── */
 .topbar{
@@ -146,10 +146,9 @@ h1{
   font-size:clamp(44px,6vw,82px);line-height:.92;letter-spacing:.01em;
   margin:22px 0 20px;max-width:14ch;
 }
-@supports (-webkit-background-clip:text) or (background-clip:text){
-  h1{background-image:linear-gradient(100deg,var(--ink) 20%,#6B6355 100%);
-      -webkit-background-clip:text;background-clip:text;color:transparent}
-}
+/* h1 — плотные чернила вместо градиента: gradient-text маскировал половину
+   заголовка и ломал выделение/печать (детектор: gradient-text ×6) */
+h1{color:var(--ink)}
 .deck{font-size:18px;line-height:1.62;color:var(--ink-2);max-width:46ch;margin:0 0 16px}
 .deck strong{color:var(--ink)}
 .actions{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0 20px}
@@ -212,7 +211,7 @@ h2{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size
   box-shadow:6px 6px 0 rgba(35,33,29,.12);
 }
 .photo img{display:block;width:100%;height:236px;object-fit:cover;border-radius:3px;background:var(--paper-deep)}
-.photo figcaption{position:absolute;left:0;right:0;bottom:7px;text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+.photo figcaption{position:absolute;left:0;right:0;bottom:7px;text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
 .photo .tape{top:-12px;width:86px;height:22px}
 .photo:nth-child(1){transform:rotate(-1.6deg)}
 .photo:nth-child(2){transform:rotate(1.2deg) translateY(6px)}
@@ -273,7 +272,7 @@ h2{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size
 .punch .wrap{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:48px;align-items:center}
 .punch-aside{display:flex;flex-direction:column;align-items:center;gap:12px;transform:rotate(-5deg)}
 .punch-aside img{width:220px;height:auto}
-.punch-aside span{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);text-align:center}
+.punch-aside span{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);text-align:center}
 .punch p{
   font-family:var(--display);font-weight:700;text-transform:uppercase;
   font-size:clamp(34px,5.6vw,68px);line-height:.96;letter-spacing:.01em;
@@ -335,11 +334,12 @@ th:last-child,td:last-child{text-align:right;font-family:var(--mono);font-size:1
 tbody tr{transition:background .3s var(--ease)}
 tbody tr:hover{background:var(--paper)}
 tr.is-popular td{background:var(--terracotta-soft)}
+tr.is-popular td:last-child{color:var(--ink)}
 tr.is-popular:hover td{background:#EFCDBD}
 .badge{
   display:inline-block;margin-left:6px;padding:3px 8px;
-  background:var(--terracotta);color:#fff;border-radius:var(--r-pill);
-  font-family:var(--mono);font-size:9px;letter-spacing:.05em;text-transform:uppercase;vertical-align:2px;
+  background:var(--terracotta-deep);color:#fff;border-radius:var(--r-pill);
+  font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;vertical-align:1px;
 }
 .rates{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:18px}
 .rate-card{padding:22px 24px;background:var(--paper-deep);border:1.5px solid var(--ink);border-radius:var(--r)}
@@ -371,7 +371,7 @@ tr.is-popular:hover td{background:#EFCDBD}
 }
 @media (max-width:640px){
   .pay{padding:16px 14px 18px}
-  .pay-cap{margin:0 0 12px;font-size:10px}
+  .pay-cap{margin:0 0 12px;font-size:11px}
   .pay-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
   .pay-row li{padding:9px 6px}
   .pay-row li:nth-child(3n+1):last-child{grid-column:2}
@@ -386,7 +386,7 @@ tr.is-popular:hover td{background:#EFCDBD}
   background:var(--paper-2);border:1.5px solid var(--ink);border-radius:var(--r);box-shadow:var(--shadow);
 }
 .s-label{
-  align-self:flex-start;font-family:var(--mono);font-size:10px;letter-spacing:.07em;text-transform:uppercase;
+  align-self:flex-start;font-family:var(--mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase;
   padding:5px 10px;border-radius:var(--r-pill);background:var(--ink);color:var(--paper-2);
 }
 .quote{
@@ -395,7 +395,7 @@ tr.is-popular:hover td{background:#EFCDBD}
   font-size:16px;line-height:1.5;color:var(--ink);
 }
 .sc-line{display:grid;gap:3px}
-.sc-line .k{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+.sc-line .k{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
 .sc-line .k .ico{width:14px;height:14px}
 .sc-line p{margin:0;font-size:16px;line-height:1.5;color:var(--ink-2)}
 .scenario .cost{
@@ -519,12 +519,12 @@ tr.is-popular:hover td{background:#EFCDBD}
 }
 .f-brand{font-family:var(--display);font-size:21px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--ink);text-decoration:none}
 .f-nav{display:flex;flex-wrap:wrap;gap:8px 18px;font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase}
-.f-nav a{color:var(--ink-2);text-decoration:none}
+.f-nav a{display:inline-block;padding:4px 0;min-height:24px;color:var(--ink-2);text-decoration:none}
 .f-nav a:hover{color:var(--terracotta-deep);text-decoration:underline}
 .f-legal{flex-basis:100%;font-size:13.5px;line-height:1.55;color:var(--ink-3);max-width:70ch;margin:0}
 .f-legal a{color:var(--ink-2)}
 .f-pay{flex-basis:100%;display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:0}
-.f-pay .f-pay-cap{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);white-space:nowrap}
+.f-pay .f-pay-cap{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);white-space:nowrap}
 .f-pay ul{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0;padding:0;list-style:none}
 .f-pay li{display:flex;align-items:center;padding:5px 9px;background:#fff;border:1px solid var(--line-soft);border-radius:8px}
 .f-pay img{display:block;height:16px;width:auto}
@@ -563,6 +563,7 @@ tr.is-popular:hover td{background:#EFCDBD}
 }
 .form textarea{min-height:110px;resize:vertical}
 .form input:focus,.form select:focus,.form textarea:focus{outline:none;border-color:var(--ink);background:#fff}
+.form input:focus-visible,.form select:focus-visible,.form textarea:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
 .form .hint{font-size:13px;color:var(--ink-3)}
 .form .check{display:flex;gap:12px;align-items:flex-start;font-family:var(--body);font-size:16px;line-height:1.45;text-transform:none;letter-spacing:0;color:var(--ink-2)}
 .form .check input{width:18px;height:18px;margin-top:3px;accent-color:var(--terracotta-deep)}
@@ -692,6 +693,7 @@ html.has-js [data-reveal].is-in{opacity:1;transform:none}
 /* ───────── печать ───────── */
 @media print{
   body::before,.topbar,.subscribe,.final-cta,.actions,.hero-doodle,.hero-stamp,.tape{display:none !important}
+  html.has-js [data-reveal],html.has-js .punch .word{opacity:1 !important;transform:none !important}
   body{background:#fff;color:#000;font-size:12pt}
   .wrap{width:100%}
   section{border-top:1pt solid #000;page-break-inside:avoid}
@@ -739,3 +741,98 @@ html.has-js [data-reveal].is-in{opacity:1;transform:none}
   .ref-banner__lead{font-size:16px}
   .ref-banner__hint{font-size:13px}
 }
+/* ═══════════════════════════════════════════════════════════════════
+   v3 «Система» — пилот taste, 27.11.2026.
+   Не перекраска: 8 системных правок поверх v2. Каждый блок самостоятелен.
+   ОТКАТ: удалить этот блок целиком (с 743-й строки до конца файла).
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── 1. ТИПОГРАФИКА: трекинг как функция регистра ───────────────────
+   Было: h1/h2/.brand CAPS с letter-spacing:.01em — для капса это тесно.
+   Ориентир linear.app: трекинг пропорционален кеглю (-0.022em у 64px),
+   но у капса знак обратный. Отдельные токены на CAPS и на строчной. */
+:root{
+  --track-caps:.055em;   /* было .01em */
+  --track-tight:-.012em; /* для строчных крупных, если понадобится */
+  /* ── 2. КОНТРАСТ ── */
+  --ink-3:#5F5749;       /* было #6B6355: 5.5:1 -> 6.6:1 на бумаге */
+  /* ── 3. РАДИУСЫ: 5 ступеней вместо 9 случайных значений ── */
+  --r-xs:6px; --r-sm:10px; --r:14px; --r-lg:22px; --r-pill:999px;
+  /* ── 4. ВЫСОТА: 3 ступени вместо 7 литералов rgba ── */
+  --shadow-1:3px 3px 0 rgba(35,33,29,.10);
+  --shadow-2:5px 5px 0 rgba(35,33,29,.14);
+  --shadow-3:8px 8px 0 rgba(35,33,29,.18);
+  /* ── 5. РИТМ: шаг 4px ── */
+  --s-1:4px; --s-2:8px; --s-3:12px; --s-4:16px; --s-5:24px; --s-6:32px; --s-7:48px; --s-8:64px;
+  --section:80px;        /* было 72px */
+  /* ── 7. МЕРА СТРОКИ ── */
+  --measure:62ch; --measure-wide:72ch;
+}
+
+h1,h2,.punch p,.brand,.legal h1{letter-spacing:var(--track-caps)}
+
+/* ── 2. КОНТРАСТ: белый текст на акцентной заливке ─────────────────
+   Было: .btn--primary{background:#C0552F;color:#fff} = 3.9:1 при кегле 12px
+   (норма AA требует 4.5:1). Стало: #A8492A = 5.6:1. Форма и цвет те же,
+   изменилась только светлота заливки на полшага. */
+.btn--primary,.form button{background:var(--terracotta-deep);border-color:#8E3C21;color:#fff}
+.btn--primary:hover,.form button:hover{background:#8E3C21}
+.badge{background:var(--terracotta-deep)}
+/* мелкий служебный текст: было 5.5:1, стало 6.6:1 */
+.muted,.price-note,.pay-note,.form-note,.f-legal,.shot-caption,.sec-num,.info-card dt,caption,th{color:var(--ink-3)}
+
+/* ── 3. РАДИУСЫ: убрать значения вне шкалы ─────────────────────────
+   11/12/13/18px -> 10 или 14. Разница в 1-2px не видна по отдельности,
+   но перестаёт читаться как «каждый блок настраивали руками». */
+.brand-mark{border-radius:var(--r-sm)}          /* было 11px */
+.sec-num b{border-radius:var(--r-sm)}           /* было 13px */
+.legend .tile,.doc-links .tile,.notice-card .tile{border-radius:var(--r-sm)} /* было 12px */
+.form input[type=text],.form input[type=email],.form input[type=number],
+.form input[type=date],.form select,.form textarea{border-radius:var(--r-sm)} /* было 12px */
+.pay-row li{border-radius:var(--r-sm)}          /* было 12px */
+.sub-icon{border-radius:var(--r)}               /* было 18px */
+.price-card,.shot-card{border-radius:var(--r-lg)} /* было 24px -> 22px */
+
+/* ── 4. ВЫСОТА: одна лестница на все карточки ───────────────────────
+   Было 7 разных rgba(.08/.10/.12/.14/.18/.22) в 12 селекторах.
+   Теперь: покой = 2, наведение = 3, утопленное = 1. */
+.feature,.step,.scenario,.notice-card,.pay,.doc-links a,.photo{box-shadow:var(--shadow-2)}
+.price-card,.final-cta,.subscribe,.shot-card{box-shadow:var(--shadow-3)}
+.faq details{box-shadow:var(--shadow-1)}
+.faq details[open]{box-shadow:var(--shadow-2)}
+.feature:hover,.doc-links a:hover{box-shadow:var(--shadow-3)}
+
+/* ── 5. РИТМ: единый шаг отступов ──────────────────────────────────
+   Было: карточки 22px, легенда 16/18px, faq 18px, секции 72px.
+   Стало: карточка 24px, легенда 16/24px, faq 24px, секция 80px. */
+section{padding:var(--section) 0}
+.feature,.step,.scenario{padding:var(--s-5)}      /* было 22px */
+.legend li{padding:var(--s-4) var(--s-5)}         /* было 16px 18px */
+.faq summary{padding:var(--s-5) 0}                /* было 18px 0 */
+.sec-head{margin-bottom:var(--s-6)}               /* было 34px */
+.notice-card{padding:var(--s-5)}                  /* было 20px 24px */
+@media (max-width:960px){section{padding:56px 0}} /* было 54px */
+
+/* ── 6. СОСТОЯНИЯ: то, чего у кнопок не было ───────────────────────
+   focus-visible был общий (3px терракота) и на терракотовой кнопке
+   становился невидимым: контур того же цвета, что заливка. */
+.btn:focus-visible,.form button:focus-visible{
+  outline:2px solid var(--ink);outline-offset:3px;box-shadow:0 0 0 6px var(--paper-2);
+}
+.btn[aria-disabled="true"],.btn:disabled{
+  opacity:.55;transform:none;box-shadow:none;cursor:not-allowed;pointer-events:none;
+}
+.faq summary:hover{color:var(--terracotta-deep)}
+.faq summary:focus-visible{outline:2px solid var(--terracotta-deep);outline-offset:4px;border-radius:var(--r-sm)}
+.tag:hover{border-color:var(--ink);color:var(--ink)}
+.doc-links a:focus-visible{outline:2px solid var(--terracotta-deep);outline-offset:3px}
+
+/* ── 7. МЕРА СТРОКИ: было 46/62/74/72ch вразнобой ─────────────────── */
+.sec-deck{max-width:var(--measure)}
+.faq .a,.legal p,.legal li,.price-note,.f-legal{max-width:var(--measure-wide)}
+
+/* ── 8. ЦИФРЫ: табличные, чтобы цены и кредиты стояли в столбик ─────
+   Ориентир: linear.app держит цифры моноширинным Berkeley Mono.
+   У нас цифры в пропорциональном PT Sans Narrow и «пляшут» в колонке. */
+table,.rate-num,.price-card td:last-child,.hero-meta,.pay-note{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
+/* ═══ конец блока v3 ═══ */
