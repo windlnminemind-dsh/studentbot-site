@@ -710,3 +710,32 @@ html.has-js [data-reveal].is-in{opacity:1;transform:none}
   .punch-aside img{width:160px}
   .punch p{max-width:16ch}
 }
+
+/* ───────── баннер «Вас пригласил друг» (?ref=) ─────────
+   Появляется только при переходе по ссылке-приглашению: без корректного ?ref=
+   элемента в разметке нет. Правила ниже ничего существующего не переопределяют. */
+.ref-banner{
+  width:min(var(--w),calc(100% - 80px));margin:20px auto 0;
+  padding:18px 24px;
+  background:var(--ochre-soft);
+  border:1.5px solid var(--ink);border-radius:var(--r-lg);
+  box-shadow:var(--shadow);
+}
+.ref-banner__lead{
+  margin:0 0 5px;
+  font-family:var(--display);font-weight:700;font-size:21px;line-height:1.15;
+  text-transform:uppercase;letter-spacing:.02em;
+}
+.ref-banner__hint{margin:0;color:var(--ink-2);font-size:15px;line-height:1.45}
+@media (max-width:960px){
+  .ref-banner{width:calc(100% - 44px);padding:16px 18px}
+}
+@media (max-width:640px){
+  .ref-banner{width:calc(100% - 36px);margin-top:14px;padding:14px 16px;border-radius:var(--r)}
+  .ref-banner__lead{font-size:17px;line-height:1.22;margin-bottom:5px}
+  .ref-banner__hint{font-size:13.5px}
+}
+@media (max-width:400px){
+  .ref-banner__lead{font-size:16px}
+  .ref-banner__hint{font-size:13px}
+}
